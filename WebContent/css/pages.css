@@ -80,12 +80,12 @@ body {
 	height: 40px;
 	vertical-align:bottom;
 }
-#tab_societes .bl {
+ .bl {
 	background-color: #e1f2ee;
 	height:37px;
 	color: #474747;
 }
-#tab_societes .wl {
+.wl {
 	background-color: white;
 	height:37px;
 	color: #474747;
@@ -591,7 +591,14 @@ text-decoration:underline;
 .title {
 	font-size:25px;
 	text-transform:uppercase;
+<<<<<<< HEAD
 	text-align:center;
+=======
+}
+.ct {
+	font-size:20px;
+	text-transform:uppercase;
+>>>>>>> vincent
 }
 a {
 	color:#516371;
@@ -612,4 +619,45 @@ a img {
 	border: solid 1px #6FBB62;
 	color: #4C8914;
 	background-color: #DCFFBF;
+<<<<<<< HEAD
+=======
+}
+.tn {
+	background-color:#99d5be;
+	font-size:20px;
+	color:white;
+	
+}
+.tn td {
+	font-size:20px;
+	height:60px;
+}
+.tx tr  {
+	height:100px;
+	text-align:center;
+}
+.tr1 {
+	float:left;
+
+}
+.tr1 thead {
+	background-color:#99d5be;
+		font-size:20px;
+	color:white;
+}
+.tr1 tr td {
+	font-size:12px;
+}
+.tr-left {
+	width:540px;
+	padding-left:10px;
+	float:left;
+}
+.tr-left thead td {
+	font-size:14px !important;
+}
+.tr-left h2 {
+	font-size:20px;
+	text-align:center;
+>>>>>>> vincent
 }
