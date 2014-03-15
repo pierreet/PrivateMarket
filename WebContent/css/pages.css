@@ -80,12 +80,12 @@ body {
 	height: 40px;
 	vertical-align:bottom;
 }
-#tab_societes .bl {
+ .bl {
 	background-color: #e1f2ee;
 	height:37px;
 	color: #474747;
 }
-#tab_societes .wl {
+.wl {
 	background-color: white;
 	height:37px;
 	color: #474747;
@@ -206,7 +206,7 @@ body {
 	padding-top:10px;
 	height:20px;
 }
-#left .styled-select  select{
+.styled-select  select{
    background: transparent;
    padding: 5px;
    font-size: 16px;
@@ -218,32 +218,15 @@ body {
 	font-size:20px;
    -webkit-appearance: none;
    }
-#left .styled-select {
-	width:380px;
+.styled-select {
+	width:690px;
    height: 43px;
-   margin-left:10px;  
+   background-color:white;
    overflow: hidden;
-   background: url('../images/arrow.jpg') no-repeat right #ddd;
+   border:1px solid #B9BABB;
+   background: url('../images/arrow.jpg') no-repeat right white;
    }
-#left .styled-select2  select{
-   background: transparent;
-   padding: 5px;
-   font-size: 16px;
-   line-height: 1;
-   border: 0;
-   height: 43px;
-   border-radius: 0;
-	width:550px;
-	font-size:20px;
-   -webkit-appearance: none;
-   }
-#left .styled-select2 {
-	width:550px;
-   height: 43px;
-   margin-left:10px;  
-   overflow: hidden;
-   background: url('../images/arrow.jpg') no-repeat right #ddd;
-   }
+
 #bg_body #right
 {
 	float:left;
@@ -581,5 +564,92 @@ text-decoration:underline;
 .prix-info h2
 {
 	padding-top:20px;
+	text-align:center;
+}
+.button {
+	width:253px;
+	height:26px;
+	padding:10px;
+	padding-top:15px;
+	background-color:#99d5be;
+	color:white;
+	font-size:16px;
+	text-align:center;
+	font-weight:bold;
+	margin:auto;
+	 border-radius: 5px;
+}
+.erreur {
+ color: #900 !important;
+ font-family: "Verdana", arial;
+ font-size:11px;
+}
+.button:hover {
+	background-color:#60af91;
+}
+.title {
+	font-size:25px;
+	text-transform:uppercase;
+}
+.ct {
+	font-size:20px;
+	text-transform:uppercase;
+}
+a {
+	color:#516371;
+	font-family: "Verdana",Arial;
+	font-size:14px;
+	font-weight:bold;
+}
+a:hover 
+{
+	color:#91adc3;
+}
+a img {
+ border:none;
+}
+ .tableaux3
+{
+	font-size: 11px;
+	border: solid 1px #6FBB62;
+	color: #4C8914;
+	background-color: #DCFFBF;
+}
+.tn {
+	background-color:#99d5be;
+	font-size:20px;
+	color:white;
+	
+}
+.tn td {
+	font-size:20px;
+	height:60px;
+}
+.tx tr  {
+	height:100px;
+	text-align:center;
+}
+.tr1 {
+	float:left;
+
+}
+.tr1 thead {
+	background-color:#99d5be;
+		font-size:20px;
+	color:white;
+}
+.tr1 tr td {
+	font-size:12px;
+}
+.tr-left {
+	width:540px;
+	padding-left:10px;
+	float:left;
+}
+.tr-left thead td {
+	font-size:14px !important;
+}
+.tr-left h2 {
+	font-size:20px;
 	text-align:center;
 }
