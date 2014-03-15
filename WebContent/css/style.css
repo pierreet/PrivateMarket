@@ -1,0 +1,370 @@
+body {
+    margin: 0px;
+    padding: 0px;
+    background-repeat: no-repeat;  
+    background-position: top center; 
+}
+#accueil{
+     background-image: url(../images/bg_home.jpg);
+}
+#logged{
+     background-image: url(../images/bg_logged.jpg);
+}
+#visite{
+     background-image: url(../images/bg_visite.jpg);
+}
+#top {
+	margin:auto;
+	min-width:1113px;
+	width:100%;
+	height:73px;
+	margin-top:-3px;
+	background-image: url(../images/top.png);
+}
+#topbody
+{
+	width:1113px;	
+	margin:auto;
+	height:73px;
+	
+}
+#bg_body 
+{
+	width:1113px;
+	height:451px;
+	margin:auto;
+}
+#bg_body #left
+{
+	float:left;
+	width:642px;
+	height:626px;
+	margin-top:25px;
+	background-image: url(../images/body.png);
+	color:white;
+}
+#left .bf
+{
+	width:640px;
+	float:left;
+	padding-top:20px;
+	padding-left:30px;
+}
+#left .bf table 
+{
+	font-size:22px;
+	font-family: "Arial", Verdana, Tahoma, serif;
+	color:white;
+}
+#left .ouvrage 
+{
+	background-image: url(../images/ouvrage.png);
+	background-repeat: no-repeat;
+	height:28px;
+	padding-left:45px;
+	padding-top: 5px;
+	width:100px;
+}
+#left .title 
+{
+	width:110px;
+	height:50px;
+	padding-top: 10px;
+
+}
+#left table tr 
+{
+	height:65px;
+}
+#left .form 
+{
+	width:406px;
+	height:44px;
+	background-image: url(../images/form.png);
+	background-repeat: no-repeat;
+	color : black;
+}
+#left .form2
+{
+	width:605px;
+	height:44px;
+	background-image: url(../images/form2.png);
+	background-repeat: no-repeat;
+	color : black;
+}
+#left .pt
+{
+	padding-top:8px;
+	padding-left:10px;
+	font-size: 18px;
+}
+#left .default
+{
+	background:none;
+	border:none;
+	width:380px;
+	height:43px;
+	margin-left:10px;
+	background-color:#dddddd;
+	font-size:20px;
+}
+#left .c1
+{
+	padding-top:10px;
+	height:20px;
+}
+#left .styled-select  select{
+   background: transparent;
+   padding: 5px;
+   font-size: 16px;
+   line-height: 1;
+   border: 0;
+   height: 43px;
+   border-radius: 0;
+	width:380px;
+	font-size:20px;
+   -webkit-appearance: none;
+   }
+#left .styled-select {
+	width:380px;
+   height: 43px;
+   margin-left:10px;  
+   overflow: hidden;
+   background: url('../images/arrow.jpg') no-repeat right #ddd;
+   }
+#left .styled-select2  select{
+   background: transparent;
+   padding: 5px;
+   font-size: 16px;
+   line-height: 1;
+   border: 0;
+   height: 43px;
+   border-radius: 0;
+	width:550px;
+	font-size:20px;
+   -webkit-appearance: none;
+   }
+#left .styled-select2 {
+	width:550px;
+   height: 43px;
+   margin-left:10px;  
+   overflow: hidden;
+   background: url('../images/arrow.jpg') no-repeat right #ddd;
+   }
+#bg_body #right
+{
+	float:left;
+	width:426px;
+	margin-top:45px;
+	margin-left:15px;
+	background-image: url(../images/body.png);
+	color:white;
+}
+#left .espace 
+{
+	text-align:center;
+	width:640px;
+	padding-top:20px;
+	float:left;
+}
+#right .espace 
+{
+	text-align:center;
+	width:426px;
+	padding-top:20px;	
+}
+#right .user {
+	background-image: url(../images/user.png);
+	width:355px;
+	background-repeat:no-repeat;
+	text-align:left;
+	padding-left:35px;
+	padding-top:5px;
+	font-family: "Arial", Verdana, Tahoma, serif;
+	font-size:18px;
+	height:85px;
+	margin:auto;
+}
+#right .user img 
+{
+	text-align:right;
+	float:right;
+}
+#right span {
+	color:#7bd5f8;
+}
+#right .input
+{
+	width:355px;
+	height:41px;
+	background-image: url(../images/input.png);
+	margin:auto;
+	text-align:left;
+	margin-top:5px;
+}
+#right .sep 
+{
+	width:355px;
+	height:5px;
+}
+#right .send
+{
+	display:none;
+	background:none;
+	border:none;
+}
+#right input 
+{
+	margin-left:35px;
+	padding-top:3px;
+	margin-top:2px;
+	width:310px;
+	height:37px;
+	font-size:20px;
+	background:none;
+	color:white;
+	border:none;
+}
+#right .loggin
+{
+	padding-top:5px;
+	width:385px;
+	text-align:right;
+
+	
+}
+#right .menu
+{
+	padding-top:50px;
+	padding-left:40px;
+	width:426px;
+	height:150px;
+	margin:autp;
+	text-align:center;
+}
+#foot_body 
+{
+	width:1113px;
+	height:200px;
+	margin:auto;
+}
+#foot_body .icon
+{
+	text-align: center;
+	padding-top:10px;
+	
+}
+#foot_body .welcome
+{
+	padding-top:20px;
+	text-align:center;
+	font-size:90px;
+	font-family: "Arial", Verdana, Tahoma, serif;
+	color:#131313;
+}
+#foot_body span
+{
+	color:#1d3d6f;
+	font-size:22px;
+}
+#foot_body p
+{
+	color:#535353;
+	font-size:20px;
+}
+#topbody .logo 
+{
+	width:600px;
+	float:left;
+}
+#topbody .menu
+{
+	width: 500px;
+	margin-top:20px;
+	float:left;
+	color:white;
+}
+a.menu_accueil {
+	background:url('../images/menu/acceuil.png') no-repeat;
+	width: 90px;
+	height: 36px;
+	display:block;
+
+	float:left;
+}
+a.menu_accueil:hover {
+	background:url('../images/menu/acceuil.png') no-repeat  0 -36px;
+}
+a.menu_consulter{
+	background:url('../images/menu/consulter.png') no-repeat;
+	width: 228px;
+	height: 36px;
+	display:block;
+	margin-left:20px;
+	float:left;
+}
+a.menu_consulter:hover {
+	background:url('../images/menu/consulter.png') no-repeat  0 -36px;
+}
+a.menu_contact{
+	background:url('../images/menu/contact.png') no-repeat;
+	width: 91px;
+	height: 36px;
+	display:block;
+	margin-left:20px;
+	float:left;
+}
+a.menu_contact:hover {
+	background:url('../images/menu/contact.png') no-repeat  0 -36px;
+}
+a.menu_saisir{
+	background:url('../images/menu/saisir.png') no-repeat;
+	width: 289px;
+	height: 35px;
+	display:block;
+	margin-left:20px;
+	float:left;
+}
+a.menu_saisir:hover {
+	background:url('../images/menu/saisir.png') no-repeat  0 -35px;
+}
+a.menu_gestion{
+	background:url('../images/menu/gestion.png') no-repeat;
+	width: 289px;
+	height: 35px;
+	display:block;
+	margin-top:55px;
+	margin-left:25px;
+	float:left;
+}
+a.menu_gestion:hover {
+	background:url('../images/menu/gestion.png') no-repeat  0 -35px;
+}
+a.menu_saisir2{
+	background:url('../images/menu/saisir2.png') no-repeat;
+	width: 289px;
+	height: 35px;
+	display:block;
+	margin-left:20px;
+	float:left;
+}
+a.menu_saisir2:hover {
+	background:url('../images/menu/saisir2.png') no-repeat  0 -35px;
+}
+a.menu_gestion2{
+	background:url('../images/menu/gestion2.png') no-repeat 0 -35px;
+	width: 289px;
+	height: 35px;
+	display:block;
+	margin-top:55px;
+	margin-left:25px;
+	float:left;
+}
+a.menu_gestion2:hover {
+	background:url('../images/menu/gestion2.png') no-repeat  0 0px;
+}
+.erreur {
+ color: #900 !important;
+ font-family: "Verdana", arial;
+ font-size:11px;
+}
