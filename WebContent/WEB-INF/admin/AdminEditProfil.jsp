@@ -1,7 +1,7 @@
 <%@page import="java.lang.*"%>
 <%@page import="java.util.ArrayList"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@page import="fr.dauphine.mido.as.projet.beans.Compte"%>
+<%@page import="fr.dauphine.mido.privatemarket.entities.*"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <c:if test="${sessionScope.sessionUtilisateur.statut == 0}">
@@ -24,10 +24,10 @@
 		<div id="bg_body_center">
 			<div id="bg_body">
 			<% 
-			Compte utilisateur = null;
+			Utilisateur utilisateur = null;
 			int id = Integer.parseInt(request.getParameter("id"));
-			ArrayList<Compte> resultat = (ArrayList<Compte>) session.getAttribute("_LISTE_OPERATIONS_UTILISATEURS");
-			utilisateur = (Compte) resultat.get(id);
+			ArrayList<Utilisateur> resultat = (ArrayList<Utilisateur>) session.getAttribute("_LISTE_OPERATIONS_UTILISATEURS");
+			utilisateur = (Utilisateur) resultat.get(id);
 			%>
 			<div class="center"><h1 class="title">Modifier le profil de <%=utilisateur.getPrenom()%> <%=utilisateur.getNom()%></h1></div><br/><br/>
 			

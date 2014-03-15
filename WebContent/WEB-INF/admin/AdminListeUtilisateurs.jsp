@@ -1,6 +1,6 @@
 <%@page import="java.util.ArrayList"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@page import="fr.dauphine.mido.as.projet.beans.*"%>
+<%@page import="fr.dauphine.mido.privatemarket.entities.*"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <c:if test="${sessionScope.sessionUtilisateur.statut == 0}">
@@ -25,7 +25,7 @@
 				<img src="images/icon/utilisateur.png" alt="" class="center"/><br/><br/>
 
 				
-					<a href="./admin?&page=newProfil"><div class="button">Ajouter un nouvel utilisateur</div></a><br/><br/>
+					<a href="./pages/inscriptionAdministrateur.xhtml"><div class="button">Ajouter un nouvel utilisateur</div></a><br/><br/>
 				<% 
 				String message = request.getParameter("message");
 				if(message != null) {
@@ -49,17 +49,17 @@
 						<TD >Opération</TD>
 					</TR>
 				</thead>
-				<% Compte utilisateur = null;
-					ArrayList<Compte> resultat = (ArrayList<Compte>) session.getAttribute("_LISTE_OPERATIONS_UTILISATEURS");
+				<% Utilisateur utilisateur = null;
+					ArrayList<Utilisateur> resultat = (ArrayList<Utilisateur>) session.getAttribute("_LISTE_OPERATIONS_UTILISATEURS");
 					for (int i = 0; i < resultat.size(); i++) {
-						utilisateur = (Compte) resultat.get(i); %>
+						utilisateur = (Utilisateur) resultat.get(i); %>
 				<% if (i % 2 == 0) { %>
 				<TR class="bl">
 				<% } %>
 				<% if (i % 2 != 0) { %>
 				<TR class="wl">
 				<% } %>
-					<TD ><%=utilisateur.getIdCompte()%></TD>
+					<TD ><%=utilisateur.getIdUtilisateur()%></TD>
 					<TD ><%=utilisateur.getNom()%></TD>
 					<TD ><%=utilisateur.getPrenom()%></TD>
 					<TD ><%=utilisateur.getEmail()%></TD>
@@ -79,10 +79,10 @@
 					<%
 					if(utilisateur.getStatut() == 2) { 
 					 if(utilisateur.getValidationInvestisseur() == 0) { %> 
-					 <a href="./AdminActivation?&id=<%=utilisateur.getIdCompte()%>" title="activation">Activation</a>
+					 <a href="./AdminActivation?&id=<%=utilisateur.getIdUtilisateur()%>" title="activation">Activation</a>
 					 <%
 					 
-					 } else { %> <%=utilisateur.getValidationInvestisseur()%> <% } 
+					 } else { %> Activé <% } 
 					} else { %> N/A <% } %>
 					 
 					 </TD>

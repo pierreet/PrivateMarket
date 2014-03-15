@@ -9,7 +9,7 @@
 			<div class="logo"><img src="images/logo.png" alt="betuf"/></div>
 			<div class="menu">
 				<a title="Accueil" href="#" class="menu_accueil"></a>
-				<a title="Consulter des données" href="#" class="menu_consulter"></a>
+				<a title="Consulter des données" href="./pages/inscription.xhtml" class="menu_consulter"></a>
 				<a title="Contact" href="#" class="menu_contact"></a>
 			</div>
 		</div>
