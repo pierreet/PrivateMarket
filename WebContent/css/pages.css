@@ -583,29 +583,3 @@ text-decoration:underline;
 	padding-top:20px;
 	text-align:center;
 }
-a {
-	color:#516371;
-	font-family: "Verdana",Arial;
-	font-size:14px;
-	font-weight:bold;
-}
-a:hover 
-{
-	color:#91adc3;
-}
-a img {
- border:none;
-}
-.button {
-	width:253px;
-	height:26px;
-	padding:10px;
-	padding-top:15px;
-	background-color:#99d5be;
-	color:white;
-	font-size:16px;
-	text-align:center;
-	font-weight:bold;
-	margin:auto;
-	 border-radius: 5px;
-}

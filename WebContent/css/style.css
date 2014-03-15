@@ -155,6 +155,7 @@ body {
 {
 	float:left;
 	width:426px;
+	height:220px !important;
 	margin-top:45px;
 	margin-left:15px;
 	background-image: url(../images/body.png);
@@ -362,9 +363,4 @@ a.menu_gestion2{
 }
 a.menu_gestion2:hover {
 	background:url('../images/menu/gestion2.png') no-repeat  0 0px;
-}
-.erreur {
- color: #900 !important;
- font-family: "Verdana", arial;
- font-size:11px;
 }
