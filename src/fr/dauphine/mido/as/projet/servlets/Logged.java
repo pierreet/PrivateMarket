@@ -10,7 +10,7 @@ import fr.dauphine.mido.as.projet.beans.Compte;
 
 
 public class Logged extends HttpServlet {
-    public static final String VUE_ADMIN        = "/WEB-INF/administrateur.jsp";
+    public static final String VUE_ADMIN        = "/WEB-INF/admin/index.jsp";
     public static final String VUE_SOCIETE      = "/WEB-INF/societe.jsp";
     public static final String VUE_INVEST       = "/WEB-INF/investisseur.jsp";
 

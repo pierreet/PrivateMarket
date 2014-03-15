@@ -26,7 +26,7 @@ public class AdminActivation extends HttpServlet {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			 response.sendRedirect( "./utilisateurs" );
+			 response.sendRedirect( "./utilisateurs?&message=ok" );
 			
 		}
 	}

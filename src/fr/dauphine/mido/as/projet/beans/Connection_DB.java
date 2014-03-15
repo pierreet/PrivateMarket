@@ -71,6 +71,37 @@ public class Connection_DB {
 		return resultat;
 	}
 	
+	
+	public static ArrayList<Compte> ListeEntreprise(String requete) {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		ArrayList<Compte> resultat = null;
+		
+		datasource = getDataSource();
+		try {
+			connection = datasource.getConnection();
+			preparedStatement = connection.prepareStatement(requete);
+			resultSet = preparedStatement.executeQuery();
+			resultat = new ArrayList<Compte>();
+			while (resultSet.next()) {
+				resultat.add(setUtilisateur(resultSet));
+			}
+		} catch (Exception e) {
+			System.err.println(e.getMessage().toString());
+		} finally {
+			try {
+				resultSet.close();
+				preparedStatement.close();
+				connection.close();
+			} catch (Exception e2) {
+				System.err.println(e2.getMessage().toString());
+			}
+		}
+		return resultat;
+	}
+	
+	
 	public static void ActivationProfil(int id, String requete) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -93,7 +124,7 @@ public class Connection_DB {
 			utilisateur.setStatut(resultSet.getInt("Statut"));
 			utilisateur.setIdCompte(resultSet.getInt("idUtilisateur"));
 			utilisateur.setPassword(resultSet.getString("Password"));
-			utilisateur.setNom(resultSet.getString("prenom"));
+			utilisateur.setNom(resultSet.getString("nom"));
 			utilisateur.setCodePostale(resultSet.getInt("CodePostale"));
 			utilisateur.setPrenom(resultSet.getString("prenom"));
 			utilisateur.setPays(resultSet.getString("pays"));		

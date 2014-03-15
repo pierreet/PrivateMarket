@@ -1,29 +1,69 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
-  <display-name>test</display-name>
-  <context-param>
-		<param-name>javax.faces.PROJECT_STAGE</param-name>
-		<param-value>Development</param-value>
-  </context-param>
-  <context-param>
-    <param-name>javax.faces.INTERPRET_EMPTY_STRING_SUBMITTED_VALUES_AS_NULL</param-name>
-    <param-value>true</param-value>
-</context-param>
-  <welcome-file-list>
-    <welcome-file>inscriptionMembreSociete.xhtml</welcome-file>
-    <welcome-file>index.htm</welcome-file>
-    <welcome-file>index.jsp</welcome-file>
-    <welcome-file>default.html</welcome-file>
-    <welcome-file>default.htm</welcome-file>
-    <welcome-file>default.jsp</welcome-file>
-  </welcome-file-list>
-  <servlet>
-    <servlet-name>Faces Servlet</servlet-name>
-    <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
-    <load-on-startup>1</load-on-startup>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>Faces Servlet</servlet-name>
-    <url-pattern>*.xhtml</url-pattern>
-  </servlet-mapping>
+<web-app 
+ xmlns="http://java.sun.com/xml/ns/javaee"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+ version="3.0">
+
+
+<servlet>
+	<servlet-name>Connexion</servlet-name>
+	<servlet-class>fr.dauphine.mido.as.projet.servlets.Connexion</servlet-class>
+</servlet>
+<servlet-mapping>
+	<servlet-name>Connexion</servlet-name>
+	<url-pattern>/connexion</url-pattern>
+</servlet-mapping>
+
+
+ <servlet>
+	<servlet-name>Deconnexion</servlet-name>
+	<servlet-class>fr.dauphine.mido.as.projet.servlets.Deconnexion</servlet-class>
+</servlet>
+<servlet-mapping>
+	<servlet-name>Deconnexion</servlet-name>
+	<url-pattern>/deconnexion</url-pattern>
+</servlet-mapping>
+
+ <servlet>
+	<servlet-name>Logged</servlet-name>
+	<servlet-class>fr.dauphine.mido.as.projet.servlets.Logged</servlet-class>
+</servlet>
+<servlet-mapping>
+	<servlet-name>Logged</servlet-name>
+	<url-pattern>/logged</url-pattern>
+</servlet-mapping>
+
+ <servlet>
+	<servlet-name>AdminListerUtilisateurs</servlet-name>
+	<servlet-class>fr.dauphine.mido.as.projet.servlets.AdminListerUtilisateurs</servlet-class>
+</servlet>
+<servlet-mapping>
+	<servlet-name>AdminListerUtilisateurs</servlet-name>
+	<url-pattern>/utilisateurs</url-pattern>
+</servlet-mapping>
+
+ <servlet>
+	<servlet-name>AdminForward</servlet-name>
+	<servlet-class>fr.dauphine.mido.as.projet.servlets.AdminForward</servlet-class>
+</servlet>
+<servlet-mapping>
+	<servlet-name>AdminForward</servlet-name>
+	<url-pattern>/admin</url-pattern>
+</servlet-mapping>
+
+ <servlet>
+	<servlet-name>AdminActivation</servlet-name>
+	<servlet-class>fr.dauphine.mido.as.projet.servlets.AdminActivation</servlet-class>
+</servlet>
+<servlet-mapping>
+	<servlet-name>AdminActivation</servlet-name>
+	<url-pattern>/AdminActivation</url-pattern>
+</servlet-mapping>
+
 </web-app>
+
+
+
+

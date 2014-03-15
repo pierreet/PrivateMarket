@@ -42,8 +42,7 @@ public class Connexion extends HttpServlet {
         if ( form.getErreurs().isEmpty() ) {
             session.setAttribute( ATT_SESSION_USER, utilisateur );
             response.sendRedirect( "./logged" );
-            
-         
+
         } else {
             /* Stockage du formulaire et du bean dans l'objet request */
             request.setAttribute( ATT_FORM, form );

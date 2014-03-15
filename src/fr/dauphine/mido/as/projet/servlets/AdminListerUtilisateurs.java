@@ -15,7 +15,7 @@ import fr.dauphine.mido.as.projet.beans.Connection_DB;
 public class AdminListerUtilisateurs extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	public static String _LISTE_OPERATIONS = "_LISTE_OPERATIONS_UTILISATEURS";
-	public static final String VUE   = "/WEB-INF/AdminListeUtilisateurs.jsp";
+	public static final String VUE   = "/WEB-INF/admin/AdminListeUtilisateurs.jsp";
 
 
 	private final static String _SQL_SELECT_Liste_Utilisateurs = "select * from privatemarket.utilisateurs order by idUtilisateur desc";
