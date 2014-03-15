@@ -583,3 +583,16 @@ text-decoration:underline;
 	padding-top:20px;
 	text-align:center;
 }
+a {
+	color:#516371;
+	font-family: "Verdana",Arial;
+	font-size:14px;
+	font-weight:bold;
+}
+a:hover 
+{
+	color:#91adc3;
+}
+a img {
+ border:none;
+}
