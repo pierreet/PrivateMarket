@@ -367,8 +367,8 @@
 					Option optionAEP = null;
 					ArrayList<Option> resultatAEP = (ArrayList<Option>) session
 							.getAttribute("_ACHAT_ENCHERE_PUT");
-					for (int i = 0; i < resultatAEC.size(); i++) {
-						optionAEP = (Option) resultatAEC.get(i);
+					for (int i = 0; i < resultatAEP.size(); i++) {
+						optionAEP = (Option) resultatAEP.get(i);
 
 						if (i % 2 == 0) {
 				%>

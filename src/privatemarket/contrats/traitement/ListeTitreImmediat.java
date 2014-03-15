@@ -19,7 +19,7 @@ import privatemarket.contrats.objet.Titre;
 public class ListeTitreImmediat extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	public static final String _PRECEDENTES_CONSULTATIONS_SQL = "_PRECEDENTES_CONSULTATIONS_SQL";
-	public static String _LISTE_OPERATIONS = "_LISTE_OPERATIONS";
+	public static String _LISTE_OPERATIONS_TITRE_IMMEDIAT = "_LISTE_OPERATIONS_TITRE_IMMEDIAT";
 	static DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");;
 	static Date date = new Date();;
 	static String DateActuel = dateFormat.format(date);
@@ -39,7 +39,7 @@ public class ListeTitreImmediat extends HttpServlet {
 		HttpSession session = request.getSession();
 		ArrayList<Titre> listeTitre = Connection_DB
 				.ListeTitreI(_SQL_SELECT_OPERATIONS);
-		session.setAttribute(_LISTE_OPERATIONS, listeTitre);
+		session.setAttribute(_LISTE_OPERATIONS_TITRE_IMMEDIAT, listeTitre);
 		getServletContext().getRequestDispatcher("/ListeTitreImmediat.jsp")
 		.forward(request, response);
 	}

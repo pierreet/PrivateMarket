@@ -11,10 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import privatemarket.contrats.objet.Connection_DB;
-import privatemarket.contrats.objet.Entreprise;
 import privatemarket.contrats.objet.Option;
 import privatemarket.contrats.objet.Titre;
-import privatemarket.contrats.objet.Vendeur;
 
 /**
  * Servlet implementation class ServletPrincipal
