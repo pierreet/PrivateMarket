@@ -57,7 +57,7 @@
 				<%
 					Option option = null;
 					ArrayList<Option> resultat = (ArrayList<Option>) session
-							.getAttribute("_LISTE_OPERATIONS");
+							.getAttribute("_LISTE_OPERATIONS_OPTION_ENCHERE");
 					for (int i = 0; i < resultat.size(); i++) {
 						option = (Option) resultat.get(i);
 				%>

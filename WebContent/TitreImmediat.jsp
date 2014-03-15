@@ -19,7 +19,7 @@
 </head>
 <body id="detail">
 	<%
-		Titre titre = (Titre) session.getAttribute("_LISTE_OPERATIONS");
+		Titre titre = (Titre) session.getAttribute("_LISTE_OPERATIONS_TITRE_IMMEDIAT");
 		Entreprise entreprise = (Entreprise) session
 				.getAttribute("_Entreprise");
 		Vendeur vendeur = (Vendeur) session.getAttribute("_Vendeur");

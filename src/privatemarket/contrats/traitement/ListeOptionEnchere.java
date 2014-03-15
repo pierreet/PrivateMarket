@@ -22,7 +22,7 @@ public class ListeOptionEnchere extends HttpServlet {
 	static DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");;
 	static Date date = new Date();;
 	static String DateActuel = dateFormat.format(date);
-	public static String _LISTE_OPERATIONS = "_LISTE_OPERATIONS";
+	public static String _LISTE_OPERATIONS_OPTION_ENCHERE = "_LISTE_OPERATIONS_OPTION_ENCHERE";
 
 	public ListeOptionEnchere() {
 		super();
@@ -41,7 +41,7 @@ public class ListeOptionEnchere extends HttpServlet {
 		String[] statut = request.getParameterValues("statut");
 		ArrayList<Option> listeTitre = Connection_DB.ListeOptionE(statut[0],
 				_SQL_SELECT_Liste_Enchere);
-		session.setAttribute(_LISTE_OPERATIONS, listeTitre);
+		session.setAttribute(_LISTE_OPERATIONS_OPTION_ENCHERE, listeTitre);
 
 		getServletContext().getRequestDispatcher("/ListeOptionEnchere.jsp")
 				.forward(request, response);

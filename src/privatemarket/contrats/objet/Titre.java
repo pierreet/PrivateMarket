@@ -14,7 +14,6 @@ public class Titre {
 	private int idAcheteur;
 	private String NomEntreprise;
 	private String NomVendeur;
-	//public static String _LISTE_OPERATIONS = "_LISTE_OPERATIONS";
 
 
 	public Titre() {

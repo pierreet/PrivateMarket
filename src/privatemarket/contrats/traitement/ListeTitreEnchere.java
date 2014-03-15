@@ -22,7 +22,7 @@ public class ListeTitreEnchere extends HttpServlet {
 	static DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");;
 	static Date date = new Date();;
 	static String DateActuel = dateFormat.format(date);
-	public static String _LISTE_OPERATIONS = "_LISTE_OPERATIONS";
+	public static String _LISTE_OPERATIONS_TITRE_ENCHERE = "_LISTE_OPERATIONS_TITRE_ENCHERE";
 
 	public ListeTitreEnchere() {
 		super();
@@ -38,7 +38,7 @@ public class ListeTitreEnchere extends HttpServlet {
 		HttpSession session = request.getSession();
 		ArrayList<Titre> listeTitre = Connection_DB
 				.ListeTitreE(_SQL_SELECT_Liste_Enchere);
-		session.setAttribute(_LISTE_OPERATIONS, listeTitre);
+		session.setAttribute(_LISTE_OPERATIONS_TITRE_ENCHERE, listeTitre);
 
 		getServletContext().getRequestDispatcher("/ListeTitreEnchere.jsp")
 				.forward(request, response);

@@ -50,7 +50,7 @@
 				<%
 					Titre titre = null;
 					ArrayList<Titre> resultat = (ArrayList<Titre>) session
-							.getAttribute("_LISTE_OPERATIONS");
+							.getAttribute("_LISTE_OPERATIONS_TITRE_IMMEDIAT");
 					for (int i = 0; i < resultat.size(); i++) {
 						titre = (Titre) resultat.get(i);
 				%>

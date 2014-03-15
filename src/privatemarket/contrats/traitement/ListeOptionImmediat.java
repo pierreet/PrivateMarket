@@ -22,7 +22,7 @@ public class ListeOptionImmediat extends HttpServlet {
 	static DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");;
 	static Date date = new Date();;
 	static String DateActuel = dateFormat.format(date);
-	public static String _LISTE_OPERATIONS = "_LISTE_OPERATIONS";
+	public static String _LISTE_OPERATIONS_OPTION_IMMEDIAT = "_LISTE_OPERATIONS_OPTION_IMMEDIAT";
 
 	public ListeOptionImmediat() {
 		super();
@@ -41,7 +41,7 @@ public class ListeOptionImmediat extends HttpServlet {
 		String[] statut = request.getParameterValues("statut");
 		ArrayList<Option> listeOption = Connection_DB.ListeOptionI(statut[0],
 				_SQL_SELECT_OPERATIONS);
-		session.setAttribute(ListeOptionImmediat._LISTE_OPERATIONS, listeOption);
+		session.setAttribute(ListeOptionImmediat._LISTE_OPERATIONS_OPTION_IMMEDIAT, listeOption);
 
 		getServletContext().getRequestDispatcher("/ListeOptionImmediat.jsp")
 				.forward(request, response);
