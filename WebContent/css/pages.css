@@ -354,13 +354,13 @@ body {
 	color:#535353;
 	font-size:20px;
 }
-#topbody .logo 
+.logo 
 {
 	width:600px;
 	float:left;
 	padding-top:15px;
 }
-#topbody .menu
+.menu
 {
 	width: 510px;
 	margin-top:35px;
@@ -368,7 +368,7 @@ body {
 	text-align:right;
 	color:white;
 }
-#topbody .menu a {
+ .menu a {
 	text-decoration:none;
 }
 
