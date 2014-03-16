@@ -332,10 +332,16 @@ public class Connection_DB {
 		resultSet = preparedStatement.executeQuery();
 	
 		while(resultSet.next()) {
-			setUtilisateur(resultSet);
 			utilisateur.setStatut(resultSet.getInt("Statut"));
 			utilisateur.setIdUtilisateur(resultSet.getInt("idUtilisateur"));
+			utilisateur.setPassword(resultSet.getString("Password"));
+			utilisateur.setNom(resultSet.getString("nom"));
+			utilisateur.setCodePostale(resultSet.getInt("CodePostale"));
+			utilisateur.setPrenom(resultSet.getString("prenom"));
+			utilisateur.setPays(resultSet.getString("pays"));		
 			utilisateur.setValidationInvestisseur(resultSet.getInt("validationInvestisseur"));
+			utilisateur.setIdEntreprise(resultSet.getInt("idEntreprise"));		
+			utilisateur.setEmail(resultSet.getString("email"));
 			return 1;
 		}
 		try {
@@ -409,5 +415,32 @@ public class Connection_DB {
 			utilisateur.setIdEntreprise(resultSet.getInt("idEntreprise"));		
 			utilisateur.setEmail(resultSet.getString("email"));
 			return utilisateur;
+	}
+
+	public static int UpdateAcheteur(String string, String string2,
+			String string3, String string4, String string5, String string6,
+			String idUtilisateur, String sqlUpdateOperations) 			throws SQLException {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		datasource = getDataSource();
+		connection = datasource.getConnection();
+		preparedStatement = connection.prepareStatement(sqlUpdateOperations);
+		preparedStatement.setString(1, string);
+		preparedStatement.setString(2, string2);
+		preparedStatement.setString(3, string3);
+		preparedStatement.setString(4, string4);
+		preparedStatement.setString(5, string5);
+		preparedStatement.setString(6, string6);
+		preparedStatement.setString(7, idUtilisateur);
+		int tmp = preparedStatement.executeUpdate();
+		try {
+			preparedStatement.close();
+			connection.close();
+		} catch (Exception e2) {
+			System.err.println(e2.getMessage().toString());
+		}
+		return tmp;
+		// TODO Auto-generated method stub
+		
 	}
 }

@@ -12,6 +12,7 @@ import fr.dauphine.mido.as.privatemarket.entities.Utilisateur;
 public final class ConnexionForm {
     private static final String CHAMP_EMAIL  = "email";
     private static final String CHAMP_PASS   = "motdepasse";
+    private static final String CHAMP_PASS2   = "mdp2";
     private static final String CHAMP_GEN   = "general";
 
     private String              resultat;
@@ -87,7 +88,19 @@ public final class ConnexionForm {
             throw new Exception( "Merci de saisir votre mot de passe." );
         }
     }
-
+    private void validationMotDePasse2( String motDePasse,String motDePasse2 ) throws Exception {
+        if ( motDePasse != null  && motDePasse2 != null) {
+            if ( motDePasse.length() < 6 ) {
+                throw new Exception( "Le mot de passe doit contenir au moins 6 caractères." );
+            }
+            else if(!motDePasse.equals(motDePasse2)) {
+            	 throw new Exception( "Le mot de passe n'est pas identique" );
+            	 
+            }
+        } else {
+            throw new Exception( "Merci de saisir votre mot de passe." );
+        }
+    }
     private void connexionUsers(String email, String mdp, Utilisateur utilisateur) throws Exception {
     		if(Connection_DB.getCompteLogin(email,mdp,utilisateur) == 0) {
     			  throw new Exception( "La combinaisons Email/Mot de passe est incorrecte.");
@@ -111,5 +124,37 @@ public final class ConnexionForm {
         } else {
             return valeur;
         }
+    }
+
+    public void updateMonCompte( HttpServletRequest request ) {
+        /* Récupération des champs du formulaire */
+        String email = getValeurChamp( request, CHAMP_EMAIL );
+        String motDePasse = getValeurChamp( request, CHAMP_PASS );
+        String motDePasse2 = getValeurChamp( request, CHAMP_PASS2 );
+
+        /* Validation du champ email. */
+        try {
+            validationEmail( email );
+        } catch ( Exception e ) {
+            setErreur( CHAMP_EMAIL, e.getMessage() );
+        }
+     
+
+        /* Validation du champ mot de passe. */
+        try {
+            validationMotDePasse2( motDePasse,motDePasse2 );
+        } catch ( Exception e ) {
+            setErreur( CHAMP_PASS, e.getMessage() );
+        }
+       
+      
+        /* Initialisation du résultat global de la validation. */
+        if ( erreurs.isEmpty() ) {
+            resultat = "";
+        } else {
+            resultat = "Erreur lors de la mise à jour du profil";
+        }
+
+
     }
 }

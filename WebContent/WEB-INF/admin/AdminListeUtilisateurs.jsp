@@ -24,7 +24,7 @@
 			<div id="bg_body">
 				<img src="images/icon/utilisateur.png" alt="" class="center"/><br/><br/>
 
-				
+				   
 					<a href="./pages/inscriptionAdministrateur.xhtml"><div class="button">Ajouter un nouvel utilisateur</div></a><br/><br/>
 				<% 
 				String message = request.getParameter("message");
