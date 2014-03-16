@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import fr.dauphine.mido.as.privatemarket.contrats.objet.Connection_DB;
+import fr.dauphine.mido.as.privatemarket.entities.Utilisateur;
 import fr.dauphine.mido.as.privatemarket.forms.ConnexionForm;
 
 
@@ -20,13 +21,13 @@ public class MonCompte extends HttpServlet {
 	public static final String VUE_EDIT_PROFIL   = "/WEB-INF/utilisateur/moncompte.jsp";
 	public static final String VUE_NEW_PROFIL   = "/WEB-INF/admin/AdminNewProfil.jsp";
     public static final String ATT_FORM         = "form";
-	private final static String _SQL_UPDATE_OPERATIONS = "UPDATE privatemarket.utilisateur SET " +
-			"Nom=?"+
-			"Prenom=?" + 
-			"Email=?" +
-			"Pays=?"+
-			"CodePostale=?"+
-			"Password=?"+
+	private final static String _SQL_UPDATE_OPERATIONS = "UPDATE privatemarket.utilisateurs SET " +
+			"Nom=?, "+
+			"Prenom=?, " + 
+			"Email=?, " +
+			"Pays=?, "+
+			"CodePostale=?, "+
+			"Password=? "+
 			"WHERE idUtilisateur=?;";
 
 	protected void doGet(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
@@ -34,6 +35,9 @@ public class MonCompte extends HttpServlet {
 		String page = request.getParameter("page");
 		
 		if(page == null) {
+			getServletContext().getRequestDispatcher(VUE_EDIT_PROFIL).forward(request, response);
+		}
+		else {
 			getServletContext().getRequestDispatcher(VUE_EDIT_PROFIL).forward(request, response);
 		}
 	}
@@ -58,8 +62,16 @@ public class MonCompte extends HttpServlet {
     		String[] codep = request.getParameterValues("code_postale");
     		String[] mdp = request.getParameterValues("motdepasse");
     		
+    	  HttpSession session = request.getSession(true);   
+       	  Utilisateur utilisateur = ((Utilisateur) session.getAttribute("sessionUtilisateur"));
+       	  utilisateur.setNom(nom[0]);
+       	  utilisateur.setPrenom(prenom[0]);
+       	  utilisateur.setEmail(email[0]);
+       	  utilisateur.setPays(pays[0]);
+       	  utilisateur.setCodePostale(Integer.parseInt(codep[0]));       	  
+    		
         	try {
-				Connection_DB.UpdateAcheteur(nom[0],prenom[0],email[0],pays[0],codep[0],mdp[0],Connexion.getIdUtilisateur(request), _SQL_UPDATE_OPERATIONS);
+				Connection_DB.UpdateUtilisateur(nom[0],prenom[0],email[0],pays[0],codep[0],mdp[0],Connexion.getIdUtilisateur(request), _SQL_UPDATE_OPERATIONS);
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

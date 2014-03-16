@@ -84,12 +84,14 @@
 						
 						<h:selectOneMenu value="#{gererUtilisateurBean.utilisateur.statut}"  id="select" class="register size2" name="fonction">
 							<f:selectItem itemValue="0" itemLabel="Administrateur"></f:selectItem>
+							<f:selectItem itemValue="1" itemLabel="Membre Société"></f:selectItem>
 							<f:selectItem itemValue="2" itemLabel="Investisseur"></f:selectItem>
 							</h:selectOneMenu>
 							</div></td>
 					</tr>
 				</table>
-				
+				#{gererUtilisateurBean.utilisateur.setIdentreprise(-1)}
+				<h:inputHidden value="#{gererUtilisateurBean.utilisateur.identreprise}"  />
 		
 				<div class="loggin"><h:commandButton value="Valider" action="validadmin" styleClass="asterisque" image="../images/menu/inscription.png"/></div>
 				</h:form>

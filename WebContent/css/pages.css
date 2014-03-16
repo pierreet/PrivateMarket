@@ -643,8 +643,10 @@ a img {
 	font-size:14px !important;
 }
 .tr-left h2 {
-	font-size:20px;
-	text-align:center;
+	font-size: 20px;
+	text-align: center;
+	margin-top: 50px;
+	float: left;
 }
 .title {
 	font-size:25px;
@@ -660,4 +662,15 @@ border: solid 1px #DB756C;
 color: #AB3C32;
 
 background-color: #FFEDEF;
+}
+
+.bl {
+	background-color: #e1f2ee;
+	height:37px;
+	color: #474747;
+}
+.wl {
+	background-color: white;
+	height:37px;
+	color: #474747;
 }

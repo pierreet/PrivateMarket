@@ -23,14 +23,18 @@
 			<div id="bg_body"><br/><br/>
 				<table style="width:45%; text-align:center; margin:auto;" class="tableaux3">
 				<tr><td width="10%"><img src="../images/icon/ok.png" alt="error" /></td><td align="center">
-	#{gererUtilisateurBean.inscrire()}
+					
+					#{gererEntrepriseBean.inscrire()}
+					#{gererUtilisateurBean.setUtilisateur(gererUtilisateurBean.rechercheUtilisateur(gererEntrepriseBean.entreprise.idMembre))}
+	        		#{gererUtilisateurBean.utilisateur.setIdentreprise(gererEntrepriseBean.getIdEntreprise(gererEntrepriseBean.getEntreprise(gererEntrepriseBean.entreprise.nom)))}
+	        		#{gererUtilisateurBean.modifier()}
 				</td></tr></table>
 				<br/>	<br/>
 				
 				<a class="center" href="../">Retour à la page principal</a>
 			</div>
-		</div>
-		<div id="bg_body_foot"></div>
+	
+		<div id="bg_body_foot"></div>	</div>
 	</div>
 	<div id="foot_body">
 		<div class="copyright">

@@ -8,7 +8,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
-<c:if test="${sessionScope.sessionUtilisateur.statut > 0}">
+<c:if test="${sessionScope.sessionUtilisateur.statut >= 0}">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -128,14 +128,6 @@
 						<tr>
 							<td width="300"><b>Date de fin du contrat :</b></td>
 							<td><%=titre.getDateFin()%></td>
-						</tr>
-						<tr>
-							<td><b>Prix plus haut :</b></td>
-							<td>FAIRE REQUETE</td>
-						</tr>
-						<tr>
-							<td><b>Prix plus bas :</b></td>
-							<td>FAIRE REQUETE</td>
 						</tr>
 					</table>
 				</div>

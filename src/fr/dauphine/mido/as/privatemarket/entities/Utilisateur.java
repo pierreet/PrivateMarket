@@ -2,9 +2,7 @@ package fr.dauphine.mido.as.privatemarket.entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 
 
 /**
@@ -15,17 +13,18 @@ import javax.validation.constraints.Size;
 @Table(name="utilisateurs")
 public class Utilisateur implements Serializable {
 	private static final long serialVersionUID = 1L;
-
+	
 	@Id
 	private int idUtilisateur;
 
 	private int codePostale;
 
 	@NotNull( message = "Veuillez saisir votre adresse email" )
-	@Pattern( regexp = "([^.@]+)(\\.[^.@]+)*@([^.@]+\\.)+([^.@]+)", message = "Merci de saisir une adresse mail valide" )
+	@Pattern ( regexp = "([^.@]+)(\\.[^.@]+)*@([^.@]+\\.)+([^.@]+)", message = "Merci de saisir une adresse mail valide" )
 	private String email;
 
-	private int idEntreprise;
+	@Column(name="idEntreprise")
+	private int identreprise;
 
 	@NotNull( message = "Veuillez saisir votre nom" )
 	private String nom;
@@ -71,12 +70,12 @@ public class Utilisateur implements Serializable {
 		this.email = email;
 	}
 
-	public int getIdEntreprise() {
-		return this.idEntreprise;
+	public int getIdentreprise() {
+		return this.identreprise;
 	}
 
-	public void setIdEntreprise(int idEntreprise) {
-		this.idEntreprise = idEntreprise;
+	public void setIdentreprise(int identreprise) {
+		this.identreprise = identreprise;
 	}
 
 	public String getNom() {

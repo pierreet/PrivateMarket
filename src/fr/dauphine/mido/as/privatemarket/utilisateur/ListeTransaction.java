@@ -65,21 +65,21 @@ public class ListeTransaction extends HttpServlet {
 		_SQL_SELECT_Achat_Titre = "select * from privatemarket.titre where "
 				+ "idAcheteur='" + id
 				+ "' and (statut=0 or (statut=1 and DateFin<'" + DateActuel
-				+ "')) " + "order by DateFin desc";
+				+ "')) " + "order by statut desc";
 		_SQL_SELECT_Achat_OPTION = "select * from privatemarket.stockoption where"
 				+ " idAcheteur='"
 				+ id
-				+ "' and Statut=? order by DateFinal desc";
+				+ "' and Statut=? order by Statut desc";
 		// Enchere en cours et obtenus
 		_SQL_SELECT_Enchere_Titre_ENCOURS = "select * from privatemarket.titre where "
 				+ "idAcheteur='"
 				+ id
 				+ "' and statut=1 and DateFin>'"
-				+ DateActuel + "' ORDER BY DateFin desc";
+				+ DateActuel + "' ORDER BY statut desc";
 		_SQL_SELECT_Enchere_OPTION = "select * from privatemarket.stockoption where"
 				+ " idAcheteur='"
 				+ id
-				+ "' and Statut=? order by DateFinal desc";
+				+ "' and Statut=? order by Statut desc";
 
 	}
 
@@ -88,14 +88,14 @@ public class ListeTransaction extends HttpServlet {
 		_SQL_SELECT_Vente_Titre = "select * from privatemarket.titre where idVendeur='"
 				+ id
 				+ "' and ((statut=0 and idAcheteur!=0) or (statut=1 and DateFin<'"
-				+ DateActuel + "')) ORDER BY DateFin desc";
+				+ DateActuel + "')) ORDER BY statut desc";
 		_SQL_SELECT_Vente_Option = "select * from privatemarket.stockoption where idVendeur='"
-				+ id + "' and Statut=? order by DateFinal desc";
+				+ id + "' and Statut=? order by Statut desc";
 		// Enchere en cours - finis ayant trouvé vendeur
 		_SQL_SELECT_Vente_Enchere_Titre = "select * from privatemarket.titre where idVendeur='"
-				+ id + "' ORDER BY DateFin desc";
+				+ id + "' ORDER BY statut desc";
 		_SQL_SELECT_Vente_Enchere_Option = "select * from privatemarket.stockoption where idVendeur='"
-				+ id + "' and Statut=? order by DateFinal desc ";
+				+ id + "' and Statut=? order by Statut desc ";
 
 	}
 

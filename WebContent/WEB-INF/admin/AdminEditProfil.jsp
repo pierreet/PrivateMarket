@@ -30,8 +30,16 @@
 			utilisateur = (Utilisateur) resultat.get(id);
 			%>
 			<div class="center"><h1 class="title">Modifier le profil de <%=utilisateur.getPrenom()%> <%=utilisateur.getNom()%></h1></div><br/><br/>
-			
-				<FORM name="register" method="post" action="http://google.fr">
+													<% 
+				String message = request.getParameter("error");
+				if(message != null) {
+				if(message.equals("email")) {
+				%>
+				<table width="45%" align="center" class="tableaux2">
+				<tr><td width="10%"><img src="images/icon/err.png" alt="error" /></td><td align="center">Erreur : L'email est dans un format incorrecte.</td></tr></table>
+				<br/>	<br/>
+				<% } } %>
+				<FORM name="form" method="post" action="admin">
 				<table id="tab_register">	
 					<tr>
 						<td>Nom <span class="asterisque"></span></td>
@@ -45,7 +53,9 @@
 						<td colspan="2">Email <span class="asterisque"></span></td>
 					</tr>
 					<tr>
-						<td colspan="2"><input type="text" value="<%=utilisateur.getEmail()%>" class="register size2" name="email" /></td>
+						<td colspan="2"><input type="text" value="<%=utilisateur.getEmail()%>" class="register size2" name="email" /><br/>
+
+						<span class="erreur">${form.erreurs['email']}</span></td>
 					</tr>
 					<tr class="sep">
 						<td>Pays <span class="asterisque"></span></td>
@@ -60,26 +70,10 @@
 					</tr>
 					<tr>
 						<td colspan="2"><div class="styled-select">
-							<SELECT class="register size2" name="fonction">
-								<OPTION VALUE="<%=utilisateur.getCodePostale()%>">Actuellement : <%
-								if(utilisateur.getStatut() == 0) 
-									{ %>Administrateur<% } 
-								else if(utilisateur.getStatut() == 1 ) 
-									{ %>Société<% }
-								else 
-									{ %>Investisseur <% } %> </OPTION>
-								<OPTION VALUE="0">Administrateur</OPTION>
-								<OPTION VALUE="1">Société</OPTION>
-								<OPTION VALUE="2">Investisseur</OPTION>
-							</SELECT></div></td>
-					</tr>
-					<tr class="sep">
-						<td colspan="2">Membre de la société <span class="asterisque"></span></td>
-					</tr>
-					<tr>
-						<td colspan="2"><div class="styled-select">
-							<SELECT class="register size2" name="fonction">
-								<OPTION VALUE="<%=utilisateur.getCodePostale()%>">Actuellement : <%
+							<input type="hidden" value="<%=utilisateur.getIdUtilisateur()%>"  name="id" />
+							<input type="hidden" value="<%=id%>"  name="id2" />
+							<SELECT class="register size2" name="statut">
+								<OPTION VALUE="<%=utilisateur.getStatut()%>">Actuellement : <%
 								if(utilisateur.getStatut() == 0) 
 									{ %>Administrateur<% } 
 								else if(utilisateur.getStatut() == 1 ) 
@@ -92,7 +86,10 @@
 							</SELECT></div></td>
 					</tr>
 				</table>
-				<div class="loggin"><input class="send" type="submit" /><a  onclick="register.submit()"><img src="images/menu/envoyer.jpg" alt="send"/></a></div>
+				</FORM>
+			
+				<div class="loggin"><input class="send" type="submit" /><a  onclick="form.submit()"><img src="images/menu/envoyer.jpg" alt="send"/></a></div>
+					<br/><br/><a href="./utilisateurs" title="logged" class="center">Retour à la liste des utilisateurs</a>
 			</div>
 	
 		<div id="bg_body_foot"></div>	</div>

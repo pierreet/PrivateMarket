@@ -18,7 +18,7 @@ import fr.dauphine.mido.as.privatemarket.contrats.objet.Vendeur;
 @WebServlet("/TitreImmediat")
 public class TitreImmediat extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private final static String _SQL_SELECT_OPERATIONS = "select * from privatemarket.titre where idTitre=? and statut=0";
+	private final static String _SQL_SELECT_OPERATIONS = "select * from privatemarket.titre where idTitre=? ";
 	public static String _LISTE_OPERATIONS_TITRE_IMMEDIAT = "_LISTE_OPERATIONS_TITRE_IMMEDIAT";
 	
 	public TitreImmediat() {
@@ -33,6 +33,7 @@ public class TitreImmediat extends HttpServlet {
 		response.setContentType("text/html");
 		HttpSession session = request.getSession();
 		String[] idTitre = request.getParameterValues("idTitre");
+
 		Titre listeTitre = Connection_DB.rechercheTitreUnique(idTitre[0],
 				_SQL_SELECT_OPERATIONS);
 		session.setAttribute(_LISTE_OPERATIONS_TITRE_IMMEDIAT, listeTitre);

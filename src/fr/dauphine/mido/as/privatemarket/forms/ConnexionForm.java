@@ -157,4 +157,24 @@ public final class ConnexionForm {
 
 
     }
+    public void updateAdminCompte( HttpServletRequest request ) {
+        /* Récupération des champs du formulaire */
+        String email = getValeurChamp( request, CHAMP_EMAIL );
+        /* Validation du champ email. */
+        try {
+            validationEmail( email );
+        } catch ( Exception e ) {
+            setErreur( CHAMP_EMAIL, e.getMessage() );
+        }
+     
+      
+        /* Initialisation du résultat global de la validation. */
+        if ( erreurs.isEmpty() ) {
+            resultat = "";
+        } else {
+            resultat = "Erreur lors de la mise à jour du profil";
+        }
+
+
+    }
 }

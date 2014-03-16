@@ -13,7 +13,8 @@ import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 
-import fr.dauphine.mido.as.privatemarket.entities.*;;
+import fr.dauphine.mido.as.privatemarket.entities.*;
+
 
 public class Connection_DB {
 	public static DataSource datasource = null;
@@ -340,7 +341,7 @@ public class Connection_DB {
 			utilisateur.setPrenom(resultSet.getString("prenom"));
 			utilisateur.setPays(resultSet.getString("pays"));		
 			utilisateur.setValidationInvestisseur(resultSet.getInt("validationInvestisseur"));
-			utilisateur.setIdEntreprise(resultSet.getInt("idEntreprise"));		
+			utilisateur.setIdentreprise(resultSet.getInt("idEntreprise"));		
 			utilisateur.setEmail(resultSet.getString("email"));
 			return 1;
 		}
@@ -412,12 +413,12 @@ public class Connection_DB {
 			utilisateur.setPrenom(resultSet.getString("prenom"));
 			utilisateur.setPays(resultSet.getString("pays"));		
 			utilisateur.setValidationInvestisseur(resultSet.getInt("validationInvestisseur"));
-			utilisateur.setIdEntreprise(resultSet.getInt("idEntreprise"));		
+			utilisateur.setIdentreprise(resultSet.getInt("idEntreprise"));		
 			utilisateur.setEmail(resultSet.getString("email"));
 			return utilisateur;
 	}
 
-	public static int UpdateAcheteur(String string, String string2,
+	public static int UpdateUtilisateur(String string, String string2,
 			String string3, String string4, String string5, String string6,
 			String idUtilisateur, String sqlUpdateOperations) 			throws SQLException {
 		Connection connection = null;
@@ -433,13 +434,16 @@ public class Connection_DB {
 		preparedStatement.setString(6, string6);
 		preparedStatement.setString(7, idUtilisateur);
 		int tmp = preparedStatement.executeUpdate();
+	
 		try {
 			preparedStatement.close();
 			connection.close();
 		} catch (Exception e2) {
 			System.err.println(e2.getMessage().toString());
 		}
+
 		return tmp;
+	
 		// TODO Auto-generated method stub
 		
 	}

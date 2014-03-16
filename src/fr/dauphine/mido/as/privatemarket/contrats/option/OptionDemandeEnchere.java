@@ -2,6 +2,10 @@ package fr.dauphine.mido.as.privatemarket.contrats.option;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,16 +19,18 @@ import fr.dauphine.mido.as.privatemarket.servlets.Connexion;
 @WebServlet("/OptionDemandeEnchere")
 public class OptionDemandeEnchere extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+	static DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");;
+	static Date date = new Date();;
+	static String DateActuel = dateFormat.format(date);
 	public OptionDemandeEnchere() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
 	private final static String _SQL_UPDATE_OPERATIONS = "UPDATE privatemarket.stockoption"
-			+ " SET idAcheteur=?, Prime= ? where idSOE=?";
+			+ " SET idAcheteur=?, Prime= ? where idSOE=? and DateFinal>'" + DateActuel + "'";
 	private final static String _SQL_SELECT_OPERATIONS = "SELECT Prime from privatemarket.stockoption"
-			+ " where idSOE=?";
+			+ " where idSOE=? and DateFinal>'"+DateActuel+"'";
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
@@ -38,7 +44,7 @@ public class OptionDemandeEnchere extends HttpServlet {
 		double enchere = Double.parseDouble(request.getParameter("enchere"));
 		Double PrixActuel = Connection_DB.getPrixActuel(idTitre[0],
 				_SQL_SELECT_OPERATIONS);
-		if (PrixActuel > enchere) {
+		if (PrixActuel > enchere || PrixActuel==0) {
 			session.setAttribute("TRANSACTION", "KO");
 		} else {
 			try {
@@ -46,6 +52,7 @@ public class OptionDemandeEnchere extends HttpServlet {
 						idTitre[0], Connexion.getIdUtilisateur(request));
 				session.setAttribute("TRANSACTION", "OK");
 			} catch (SQLException e) {
+				session.setAttribute("TRANSACTION", "KO");
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}

@@ -4,10 +4,9 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.ejb.EJB;
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
-import javax.faces.context.FacesContext;
+
 
 import fr.dauphine.mido.as.privatemarket.ejb.UtilisateurEJB;
 import fr.dauphine.mido.as.privatemarket.entities.Utilisateur;
@@ -20,6 +19,7 @@ public class GererUtilisateurBean implements Serializable {
 	
 	private Utilisateur utilisateur;
 	private List<Utilisateur> listeUtilisateur;
+	private List<Utilisateur> listeMembreSociete;
 	
 	@EJB
 	private UtilisateurEJB utilisateurEJB;
@@ -30,25 +30,25 @@ public class GererUtilisateurBean implements Serializable {
 	
 	public String inscrire(){
 		utilisateurEJB.ajouter(utilisateur);
-		FacesMessage message = new FacesMessage("Inscription validée");
-		FacesContext.getCurrentInstance().addMessage(null, message);
-		return "Votre inscription à bien été effectué";
+		return "Validation accepté";
 	}
 	
-	public void supprimer(){
+	public String supprimer(){
 		utilisateurEJB.supprimer(utilisateur);
-		FacesMessage message = new FacesMessage("Utilisateur supprimé");
-		FacesContext.getCurrentInstance().addMessage(null, message);
+		return "Utilisateur supprimé";
 	}
 	
-	public void modifier(){
+	public String modifier(){
 		utilisateurEJB.modifier(utilisateur);
-		FacesMessage message = new FacesMessage("Utilisateur modifié");
-		FacesContext.getCurrentInstance().addMessage(null, message);
+		return "";
 	}
 	
 	public Utilisateur getUtilisateur(){
 		return utilisateur;
+	}
+	
+	public void setUtilisateur(Utilisateur utilisateur){
+		this.utilisateur = utilisateur;
 	}
 	
 	public List<Utilisateur> getListeUtilisateur(){
@@ -58,4 +58,15 @@ public class GererUtilisateurBean implements Serializable {
 		return listeUtilisateur;
 	}
 	
+	public List<Utilisateur> getListeMembreSociete(){
+		if(listeMembreSociete==null){
+			listeMembreSociete = utilisateurEJB.listeMembreSociete();
+		}
+		return listeMembreSociete;
+	}
+	
+	public Utilisateur rechercheUtilisateur(int id){
+		return utilisateurEJB.rechercherParId(id);
+	}
+		
 }

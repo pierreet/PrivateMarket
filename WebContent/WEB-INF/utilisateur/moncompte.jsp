@@ -24,7 +24,15 @@
 		<div id="bg_body_center">
 			<div id="bg_body">
 			<div class="center"><h1 class="title">Modifier le profil de ${sessionScope.sessionUtilisateur.nom} ${sessionScope.sessionUtilisateur.prenom}</h1></div><br/><br/>
-			
+				<% 
+				String message = request.getParameter("page");
+				if(message != null) {
+				if(message.equals("save")) {
+				%>
+				<table style="width:45%; text-align:center; margin:auto;" class="tableaux3">
+				<tr><td width="10%"><img src="images/icon/ok.png" alt="error" /></td><td align="center">Votre profil a bien été mise à jour.</td></tr></table>
+				<br/>	<br/>
+				<%}} %>
 				<FORM name="register" method="post" action="./MonCompte">
 				<table id="tab_register">	
 					<tr>
@@ -61,6 +69,8 @@
 				     <p class="${empty form.erreurs ? 'succes' : 'erreur'} center">${form.erreurs['general']}<br/><b>${form.resultat}</b></p>
 				</FORM>
 				<div class="loggin"><input class="send" type="submit" /><a  onclick="register.submit()"><img src="images/menu/envoyer.jpg" alt="send"/></a></div>
+				
+					<br/><br/><a class="center" href="./logged">Retour à la page principal</a>
 			</div>
 	
 		<div id="bg_body_foot"></div>	</div>

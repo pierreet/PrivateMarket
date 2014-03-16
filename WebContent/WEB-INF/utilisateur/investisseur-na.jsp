@@ -21,7 +21,7 @@
 		<div id="bg_body_center">
 		
 			<div id="bg_body"><br/><br/>
-			<table style="width:45%; text-align:center; margin:auto;" class="tableaux3">
+			<table style="width:45%; text-align:center; margin:auto;" class="tableaux2">
 				<tr><td width="10%"><img src="./images/icon/err.png" alt="error" /></td><td align="center">
 				Votre profil n'a pas encore été validé par un des administrateur du site.
 				</td></tr></table>

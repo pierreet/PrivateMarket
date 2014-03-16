@@ -1,5 +1,6 @@
 package fr.dauphine.mido.as.privatemarket.ejb;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -13,14 +14,16 @@ import javax.persistence.Query;
 import fr.dauphine.mido.as.privatemarket.entities.Utilisateur;
 
 
+
 @Stateless
 public class UtilisateurEJB {
 	private static final String JPQL_SELECT_PAR_EMAIL = "SELECT u FROM Utilisateur u WHERE u.email=:email";
 	private static final String JPQL_SELECT_ALL = "SELECT u FROM Utilisateur u";
+	private static final String JPQL_SELECT_MEMBRE_SOCIETE_LIBRE = "SELECT u FROM Utilisateur u WHERE u.statut=1 AND u.identreprise=-1";
 	
 	@PersistenceUnit(unitName="basePM")
 	private EntityManagerFactory emf;
-	
+
 	
 	public void ajouter(Utilisateur utilisateur){
 		EntityManager em = emf.createEntityManager();
@@ -43,7 +46,7 @@ public class UtilisateurEJB {
 		EntityTransaction et = em.getTransaction();
 		et.begin();
 		
-		Utilisateur tmp = rechercher(utilisateur.getEmail());
+		/*Utilisateur tmp = rechercher(utilisateur.getEmail());
 
 		if(tmp != null){
 			if(utilisateur.getNom() != null)
@@ -52,9 +55,24 @@ public class UtilisateurEJB {
 			if(utilisateur.getPrenom() != null)
 				tmp.setPrenom(utilisateur.getPrenom());
 			
-			em.merge(tmp);
-		}
-		
+			if(utilisateur.getEmail() != null)
+				tmp.setEmail(utilisateur.getEmail());
+			
+			if(utilisateur.getPays() != null)
+				tmp.setPays(utilisateur.getPays());
+			
+			if(utilisateur.getCodePostale() == 0)
+				tmp.setCodePostale(utilisateur.getCodePostale());
+						
+			if((utilisateur.getStatut() == 0) || (utilisateur.getStatut() == 1) || (utilisateur.getStatut() == 2))
+				tmp.setStatut(utilisateur.getStatut());
+			
+			if(utilisateur.getIdEntreprise() == 0)
+				tmp.setIdEntreprise(utilisateur.getIdEntreprise());
+			
+			em.merge(utilisateur);
+		}*/
+		em.merge(utilisateur);
 		et.commit();
 	}
 	
@@ -73,12 +91,22 @@ public class UtilisateurEJB {
 		return utilisateur;
 	}
 	
+	public Utilisateur rechercherParId(int id) {
+		EntityManager em = emf.createEntityManager();
+		EntityTransaction et = em.getTransaction();
+		et.begin();
+		Utilisateur utilisateur=null;
+		utilisateur = em.find(Utilisateur.class, id);
+		et.commit();	
+		return utilisateur;
+	}
+	
 	@SuppressWarnings("unchecked")
 	public List<Utilisateur> alltable(){
 		EntityManager em = emf.createEntityManager();
 		EntityTransaction et = em.getTransaction();
 		et.begin();
-		List<Utilisateur> lutilisateur=null;
+		List<Utilisateur> lutilisateur = new ArrayList<Utilisateur>();
 		Query requete = em.createQuery(JPQL_SELECT_ALL);
 		try{
 			lutilisateur = (List<Utilisateur>) requete.getResultList();
@@ -87,5 +115,24 @@ public class UtilisateurEJB {
 		et.commit();
 		return lutilisateur;
 	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Utilisateur> listeMembreSociete(){
+		EntityManager em = emf.createEntityManager();
+		EntityTransaction et = em.getTransaction();
+		et.begin();
+		List<Utilisateur> lutilisateur = new ArrayList<Utilisateur>();
+		Query requete = em.createQuery(JPQL_SELECT_MEMBRE_SOCIETE_LIBRE);
+		try{
+			lutilisateur = (List<Utilisateur>) requete.getResultList();
+		}catch(NoResultException e){}
+		
+		et.commit();
+		return lutilisateur;
+	}
+
+	
+	
+
 
 }

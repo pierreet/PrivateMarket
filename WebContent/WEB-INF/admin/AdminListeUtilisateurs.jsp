@@ -34,6 +34,11 @@
 				<table width="45%" align="center" class="tableaux3">
 				<tr><td width="10%"><img src="images/icon/ok.png" alt="error" /></td><td align="center">L'activation du membre à bien été effectué.</td></tr></table>
 				<br/>	<br/>
+				<% } if(message.equals("edit")) {
+				%>
+				<table width="45%" align="center" class="tableaux3">
+				<tr><td width="10%"><img src="images/icon/ok.png" alt="error" /></td><td align="center">Le membre a bien été mis à jour.</td></tr></table>
+				<br/>	<br/>
 				<%}} %>
 				<TABLE id="tab_societes" CELLPADDING="0" CELLSPACING="0">
 				<thead>
