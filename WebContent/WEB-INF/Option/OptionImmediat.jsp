@@ -8,6 +8,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
+<c:if test="${sessionScope.sessionUtilisateur.statut > 0}">
 <html>
 <head>
 <link rel="stylesheet" type="text/css" href="css/pages.css"
@@ -100,7 +101,7 @@
 							href="javascript:window.print()"><img
 							src="images/icon/print.jpg" alt="print" /></a>
 					</div>
-					<form name="form" action="/PrivateMarket/AchatOptionImmediat"
+					<form name="form" action="./AchatOptionImmediat"
 						method="Post">
 						<div class="right-achat">
 							<div class="box-achat">
@@ -174,3 +175,4 @@
 		</div>
 </body>
 </html>
+</c:if>

@@ -4,9 +4,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 
+
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
+<c:if test="${sessionScope.sessionUtilisateur.statut > 0}">
 <html>
 <head>
 <link rel="stylesheet" type="text/css" href="css/pages.css"
@@ -17,10 +19,14 @@
 <body id="investisseur">
 	<div id="top">
 		<div id="topBody">
-			<div class="logo"><img src="images/logo2.png" alt="privatemarket"/></div>
+			<div class="logo">
+				<img src="images/logo2.png" alt="privatemarket" />
+			</div>
 			<div class="menu">
-				<a href="./listeEntreprise" ><img src="images/menu/liste.png" alt="liste" /></a>
-				<a href="./deconnexion" ><img src="images/menu/logout.jpg" alt="logout" /></a></div>
+				<a href="./listeEntreprise"><img src="images/menu/liste.png"
+					alt="liste" /></a> <a href="./deconnexion"><img
+					src="images/menu/logout.jpg" alt="logout" /></a>
+			</div>
 		</div>
 	</div>
 	<div id="content">
@@ -37,22 +43,23 @@
 					<h1 class="center">ACHAT</h1>
 					<br />
 
-					<h1>Action(s) Achetée(s)</h1>
-					<table width="100%" CELLPADDING=0 CELLSPACING=0 align="center" class="tr1">
+					<h2>Action(s)</h2>
+					<table width="100%" CELLPADDING=0 CELLSPACING=0 align="center"
+						class="tr1">
 						<thead>
 							<TR>
 								<TD align="center">Type de Contrat</TD>
 								<TD align="center">Nom de l'Entreprise</TD>
-								<TD align="center">Prix Initial</TD>
+								<TD align="center">Prix</TD>
+								<TD align="center">Date de Transaction</TD>
 								<TD align="center">Consulter</TD>
 
 
 							</TR>
 						</thead>
-						<%
+						<%	 
 							Titre titre = null;
-							ArrayList<Titre> resultat = (ArrayList<Titre>) session
-									.getAttribute("_ACHAT_TITRE");
+							ArrayList<Titre> resultat = (ArrayList<Titre>) session.getAttribute("_ACHAT_TITRE");
 							for (int i = 0; i < resultat.size(); i++) {
 								titre = (Titre) resultat.get(i);
 						%>
@@ -85,8 +92,9 @@
 							</TD>
 							<TD align="center"><%=titre.getNomEntreprise()%></TD>
 							<TD align="center"><%=titre.getPrix()%></TD>
+							<TD align="center"><%=titre.getDateFin()%></TD>
 							<TD align="center">
-								<form action="/PrivateMarket/TitreImmediat" method="Post">
+								<form action="./TitreImmediat" method="Post">
 									<input type="hidden" name="idTitre" value="<%=titre.getId()%>">
 									<INPUT type="submit" name="Envoyer" value="Consulter"></INPUT>
 								</form>
@@ -100,14 +108,15 @@
 
 					</TABLE>
 
-					<h1>Call(s) Achete(s)</h1>
-					<table width="100%" CELLPADDING=0 CELLSPACING=0 align="center" class="tr1">
+					<h2>Call(s)</h2>
+					<table width="100%" CELLPADDING=0 CELLSPACING=0 align="center"
+						class="tr1">
 						<thead>
 
 							<TR>
 								<TD align="center">Type</TD>
 								<TD align="center">Entreprise</TD>
-								<TD align="center">Prix Initial</TD>
+								<TD align="center">Prix</TD>
 								<TD align="center">Consulter</TD>
 							</TR>
 
@@ -139,9 +148,9 @@
 							<TD align="center">CALL</TD>
 							<TD align="center"><%=option.getNomEntreprise()%></TD>
 							<TD align="center"><%=option.getPrixInitial()%></TD>
-	
-							<TD align="center"><form
-									action="/PrivateMarket/OptionImmediat" method="Post">
+
+							<TD align="center"><form action="./OptionImmediat"
+									method="Post">
 									<input type="hidden" name="idTitre"
 										value="<%=option.getIdSOI()%>"> <INPUT type="submit"
 										name="Envoyer" value="Consulter"></INPUT>
@@ -156,8 +165,9 @@
 					</TABLE>
 
 
-					<h1>Put(s) Acheté(s)</h1>
-					<table width="100%" CELLPADDING=0 CELLSPACING=0 align="center" class="tr1">
+					<h2>Put(s)</h2>
+					<table width="100%" CELLPADDING=0 CELLSPACING=0 align="center"
+						class="tr1">
 						<thead>
 
 							<TR>
@@ -193,8 +203,8 @@
 							%>
 							<TD align="center">PUT</TD>
 							<TD align="center"><%=option1.getNomEntreprise()%></TD>
-							<TD align="center"><form
-									action="/PrivateMarket/OptionImmediat" method="Post">
+							<TD align="center"><form action="./OptionImmediat"
+									method="Post">
 									<input type="hidden" name="idTitre"
 										value="<%=option1.getIdSOI()%>"> <INPUT type="submit"
 										name="Envoyer" value="Consulter"></INPUT>
@@ -208,8 +218,9 @@
 
 					</TABLE>
 
-					<h1>Achat: Enchere Titre</h1>
-					<table width="100%" CELLPADDING=0 CELLSPACING=0 align="center" class="tr1">
+					<h2>Enchere Titre en cours</h2>
+					<table width="100%" CELLPADDING=0 CELLSPACING=0 align="center"
+						class="tr1">
 						<thead>
 							<TR>
 
@@ -242,7 +253,7 @@
 							%>
 							<TD align="center"><%=titreE.getNomEntreprise()%></TD>
 							<TD align="center">
-								<form action="/PrivateMarket/TitreEnchere" method="Post">
+								<form action="./TitreEnchere" method="Post">
 									<input type="hidden" name="idTitre" value="<%=titreE.getId()%>">
 									<INPUT type="submit" name="Envoyer" value="Consulter"></INPUT>
 								</form>
@@ -256,8 +267,9 @@
 
 					</TABLE>
 
-					<h1>Achat: Enchere Call</h1>
-					<table width="100%" CELLPADDING=0 CELLSPACING=0 align="center" class="tr1">
+					<h2>Enchere Call en cours & finis</h2>
+					<table width="100%" CELLPADDING=0 CELLSPACING=0 align="center"
+						class="tr1">
 						<thead>
 
 							<TR>
@@ -291,8 +303,8 @@
 							%>
 							<TD align="center">CALL</TD>
 							<TD align="center"><%=optionAEC.getNomEntreprise()%></TD>
-							<TD align="center"><form
-									action="/PrivateMarket/OptionEnchere" method="Post">
+							<TD align="center"><form action="./OptionEnchere"
+									method="Post">
 									<input type="hidden" name="idTitre"
 										value="<%=optionAEC.getIdSOI()%>"> <INPUT
 										type="submit" name="Envoyer" value="Consulter"></INPUT>
@@ -305,8 +317,9 @@
 						%>
 
 					</TABLE>
-					<h1>Achat: Enchere Put</h1>
-					<table width="100%" CELLPADDING=0 CELLSPACING=0 align="center" class="tr1">
+					<h2>Enchere Put en cours & finis</h2>
+					<table width="100%" CELLPADDING=0 CELLSPACING=0 align="center"
+						class="tr1">
 						<thead>
 
 							<TR>
@@ -340,8 +353,8 @@
 							%>
 							<TD align="center">PUT</TD>
 							<TD align="center"><%=optionAEP.getNomEntreprise()%></TD>
-							<TD align="center"><form
-									action="/PrivateMarket/OptionEnchere" method="Post">
+							<TD align="center"><form action="./OptionEnchere"
+									method="Post">
 									<input type="hidden" name="idTitre"
 										value="<%=optionAEP.getIdSOI()%>"> <INPUT
 										type="submit" name="Envoyer" value="Consulter"></INPUT>
@@ -359,57 +372,338 @@
 				<div class="tr-left">
 					<h1 class="center">VENTE</h1>
 					<br />
+					<h2>Action(s)</h2>
+					<table width="100%" CELLPADDING=0 CELLSPACING=0 align="center"
+						class="tr1">
+						<thead>
+							<TR>
+								<TD align="center">Type de Contrat</TD>
+								<TD align="center">Nom de l'Entreprise</TD>
+								<TD align="center">Prix</TD>
+								<TD align="center">Date de Transaction</TD>
+								<TD align="center">Consulter</TD>
 
-					<h2>Liste des titre achat immédiat</h2>
+
+							</TR>
+						</thead>
+						<%
+							Titre titreV = null;
+							ArrayList<Titre> resultatV = (ArrayList<Titre>) session
+									.getAttribute("_VENTE_TITRE");
+							for (int i = 0; i < resultatV.size(); i++) {
+								titreV = (Titre) resultatV.get(i);
+						%>
+						<%
+							if (i % 2 == 0) {
+						%>
+
+						<TR class="bl">
+							<%
+								}
+							%>
+							<%
+								if (i % 2 != 0) {
+							%>
+						
+						<TR class="wl">
+							<%
+								}
+							%>
+							<TD align="center">
+								<%
+									if (titreV.getStatut() == 0) {
+								%>IMMEDIAT <%
+									} else {
+								%>ENCHERE <%
+									}
+								%>
+
+
+							</TD>
+							<TD align="center"><%=titreV.getNomEntreprise()%></TD>
+							<TD align="center"><%=titreV.getPrix()%></TD>
+							<TD align="center"><%=titreV.getDateFin()%></TD>
+							<TD align="center">
+								<form action="./TitreImmediat" method="Post">
+									<input type="hidden" name="idTitre" value="<%=titreV.getId()%>">
+									<INPUT type="submit" name="Envoyer" value="Consulter"></INPUT>
+								</form>
+							</TD>
+
+
+						</TR>
+						<%
+							}
+						%>
+
+					</TABLE>
+
+					<h2>Call(s)</h2>
 					<table width="100%" CELLPADDING=0 CELLSPACING=0 align="center"
 						class="tr1">
 						<thead>
-							<td>Nom de la société :</td>
-							<td>Code :</td>
-							<td>Création :</td>
-							<td>Secteur d'activité :</td>
-							<td>Action :</td>
+
+							<TR>
+								<TD align="center">Type</TD>
+								<TD align="center">Entreprise</TD>
+								<TD align="center">Prix</TD>
+								<TD align="center">Date de Transaction</TD>
+								<TD align="center">Consulter</TD>
+							</TR>
+
+
 						</thead>
-						<tr class="bl">
-							<td>Booba & Co</td>
-							<td>FR00000BOCO</td>
-							<td>14 Février 2014</td>
-							<td>Musique souterraine</td>
-							<td class="center">Voir</td>
-						</tr>
-						<tr class="wl">
-							<td>SAMSUNG KOREAN & CO</td>
-							<td>KR00000SAMKO</td>
-							<td>12 Mars 2010</td>
-							<td>Appareil éléctronique</td>
-							<td class="center">Voir</td>
-						</tr>
-					</table>
-					<h2>Liste des CALL achat immédiat</h2>
+						<%
+							Option optionV = null;
+							ArrayList<Option> AchatCallImmediatV = (ArrayList<Option>) session
+									.getAttribute("_VENTE_OPTION_CALL");
+							for (int i = 0; i < AchatCallImmediatV.size(); i++) {
+								optionV = (Option) AchatCallImmediatV.get(i);
+						%>
+						<%
+							if (i % 2 == 0) {
+						%>
+
+						<TR class="bl">
+							<%
+								}
+							%>
+							<%
+								if (i % 2 != 0) {
+							%>
+						
+						<TR class="wl">
+							<%
+								}
+							%>
+							<TD align="center">CALL</TD>
+							<TD align="center"><%=optionV.getNomEntreprise()%></TD>
+							<TD align="center"><%=optionV.getPrixInitial()%></TD>
+							<TD align="center"><%=optionV.getDateFinal()%></TD>
+							<TD align="center"><form action="./OptionImmediat"
+									method="Post">
+									<input type="hidden" name="idTitre"
+										value="<%=optionV.getIdSOI()%>"> <INPUT type="submit"
+										name="Envoyer" value="Consulter"></INPUT>
+								</form></TD>
+
+						</TR>
+
+						<%
+							}
+						%>
+
+					</TABLE>
+					<h2>Put(s)</h2>
 					<table width="100%" CELLPADDING=0 CELLSPACING=0 align="center"
 						class="tr1">
 						<thead>
-							<td>Nom de la société :</td>
-							<td>Code :</td>
-							<td>Création :</td>
-							<td>Secteur d'activité :</td>
-							<td>Action :</td>
+
+							<TR>
+								<TD align="center">Type</TD>
+								<TD align="center">Entreprise</TD>
+								<TD align="center">Date Transaction</TD>
+								<TD align="center">Consulter</TD>
+							</TR>
+
+
 						</thead>
-						<tr class="bl">
-							<td>Booba & Co</td>
-							<td>FR00000BOCO</td>
-							<td>14 Février 2014</td>
-							<td>Musique souterraine</td>
-							<td class="center">Voir</td>
-						</tr>
-						<tr class="wl">
-							<td>SAMSUNG KOREAN & CO</td>
-							<td>KR00000SAMKO</td>
-							<td>12 Mars 2010</td>
-							<td>Appareil éléctronique</td>
-							<td class="center">Voir</td>
-						</tr>
-					</table>
+						<%
+							Option option1V = null;
+							ArrayList<Option> AchatPUTImmediatV = (ArrayList<Option>) session
+									.getAttribute("_VENTE_OPTION_PUT");
+							for (int i = 0; i < AchatPUTImmediatV.size(); i++) {
+								option1V = (Option) AchatPUTImmediatV.get(i);
+						%>
+						<%
+							if (i % 2 == 0) {
+						%>
+
+						<TR class="bl">
+							<%
+								}
+							%>
+							<%
+								if (i % 2 != 0) {
+							%>
+						
+						<TR class="wl">
+							<%
+								}
+							%>
+							<TD align="center">PUT</TD>
+							<TD align="center"><%=option1V.getNomEntreprise()%></TD>
+
+							<TD align="center"><%=option1V.getDateFinal()%></TD>
+							<TD align="center"><form action="./OptionImmediat"
+									method="Post">
+									<input type="hidden" name="idTitre"
+										value="<%=option1V.getIdSOI()%>"> <INPUT type="submit"
+										name="Envoyer" value="Consulter"></INPUT>
+								</form></TD>
+
+						</TR>
+
+						<%
+							}
+						%>
+
+					</TABLE>
+
+					<h2>Enchere Titre en cours</h2>
+					<table width="100%" CELLPADDING=0 CELLSPACING=0 align="center"
+						class="tr1">
+						<thead>
+							<TR>
+
+								<TD align="center">Nom de l'Entreprise</TD>
+								<TD align="center">Consulter</TD>
+
+
+							</TR>
+						</thead>
+						<%
+							Titre titreEV = null;
+							ArrayList<Titre> resultatTEV = (ArrayList<Titre>) session
+									.getAttribute("_VENTE_ENCHERE_TITRE");
+							for (int i = 0; i < resultatTEV.size(); i++) {
+								titreEV = (Titre) resultatTEV.get(i);
+
+								if (i % 2 == 0) {
+						%>
+
+						<TR class="bl">
+							<%
+								}
+
+									if (i % 2 != 0) {
+							%>
+						
+						<TR class="wl">
+							<%
+								}
+							%>
+							<TD align="center"><%=titreEV.getNomEntreprise()%></TD>
+							<TD align="center">
+								<form action="./TitreEnchere" method="Post">
+									<input type="hidden" name="idTitre"
+										value="<%=titreEV.getId()%>"> <INPUT type="submit"
+										name="Envoyer" value="Consulter"></INPUT>
+								</form>
+							</TD>
+
+
+						</TR>
+						<%
+							}
+						%>
+
+					</TABLE>
+
+					<h2>Enchere Call en cours & finis</h2>
+					<table width="100%" CELLPADDING=0 CELLSPACING=0 align="center"
+						class="tr1">
+						<thead>
+
+							<TR>
+								<TD align="center">Type</TD>
+								<TD align="center">Entreprise</TD>
+								<TD align="center">Consulter</TD>
+							</TR>
+
+
+						</thead>
+						<%
+							Option optionAECV = null;
+							ArrayList<Option> resultatAECV = (ArrayList<Option>) session
+									.getAttribute("_VENTE_ENCHERE_CALL");
+							for (int i = 0; i < resultatAECV.size(); i++) {
+								optionAECV = (Option) resultatAECV.get(i);
+
+								if (i % 2 == 0) {
+						%>
+
+						<TR class="bl">
+							<%
+								}
+
+									if (i % 2 != 0) {
+							%>
+						
+						<TR class="wl">
+							<%
+								}
+							%>
+							<TD align="center">CALL</TD>
+							<TD align="center"><%=optionAECV.getNomEntreprise()%></TD>
+							<TD align="center"><form action="./OptionEnchere"
+									method="Post">
+									<input type="hidden" name="idTitre"
+										value="<%=optionAECV.getIdSOI()%>"> <INPUT
+										type="submit" name="Envoyer" value="Consulter"></INPUT>
+								</form></TD>
+
+						</TR>
+
+						<%
+							}
+						%>
+
+					</TABLE>
+					<h2>Enchere Put en cours & finis</h2>
+					<table width="100%" CELLPADDING=0 CELLSPACING=0 align="center"
+						class="tr1">
+						<thead>
+
+							<TR>
+								<TD align="center">Type</TD>
+								<TD align="center">Entreprise</TD>
+								<TD align="center">Consulter</TD>
+							</TR>
+
+
+						</thead>
+						<%
+							Option optionAEPV = null;
+							ArrayList<Option> resultatAEPV = (ArrayList<Option>) session
+									.getAttribute("_VENTE_ENCHERE_PUT");
+							for (int i = 0; i < resultatAEPV.size(); i++) {
+								optionAEPV = (Option) resultatAEPV.get(i);
+
+								if (i % 2 == 0) {
+						%>
+
+						<TR class="bl">
+							<%
+								}
+
+									if (i % 2 != 0) {
+							%>
+						
+						<TR class="wl">
+							<%
+								}
+							%>
+							<TD align="center">PUT</TD>
+							<TD align="center"><%=optionAEPV.getNomEntreprise()%></TD>
+							<TD align="center"><form action="./OptionEnchere"
+									method="Post">
+									<input type="hidden" name="idTitre"
+										value="<%=optionAEPV.getIdSOI()%>"> <INPUT
+										type="submit" name="Envoyer" value="Consulter"></INPUT>
+								</form></TD>
+
+						</TR>
+
+						<%
+							}
+						%>
+
+					</TABLE>
+
+
+
+
 				</div>
 				<br /> <br /> <a class="center" href="./logged">Retour à la
 					page principal</a>
@@ -426,7 +720,7 @@
 		</div>
 </body>
 </html>
-
+</c:if>
 
 
 

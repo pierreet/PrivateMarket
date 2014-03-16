@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import fr.dauphine.mido.as.privatemarket.contrats.objet.Connection_DB;
-
+import fr.dauphine.mido.as.privatemarket.servlets.Connexion;
 
 @WebServlet("/TitreDemandeEnchere")
 public class TitreDemandeEnchere extends HttpServlet {
@@ -22,10 +22,8 @@ public class TitreDemandeEnchere extends HttpServlet {
 	}
 
 	private final static String _SQL_UPDATE_OPERATIONS = "UPDATE privatemarket.titre"
-			+ " SET PrixActuel= ?, idAcheteur='5' where idTitre=?";
+			+ " SET idAcheteur=?, PrixActuel= ? where idTitre=?";
 	private final static String _SQL_SELECT_OPERATIONS = "SELECT PrixActuel from privatemarket.titre where idTitre=?";
-
-	
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
@@ -37,20 +35,23 @@ public class TitreDemandeEnchere extends HttpServlet {
 		HttpSession session = request.getSession();
 		String[] idTitre = request.getParameterValues("idTitre");
 		double enchere = Double.parseDouble(request.getParameter("enchere"));
-		Double PrixActuel = Connection_DB.getPrixActuel(idTitre[0], _SQL_SELECT_OPERATIONS );
+		Double PrixActuel = Connection_DB.getPrixActuel(idTitre[0],
+				_SQL_SELECT_OPERATIONS);
 		if (PrixActuel > enchere) {
 			session.setAttribute("TRANSACTION", "KO");
 		} else {
 			try {
-				Connection_DB.UpdatePrix(_SQL_UPDATE_OPERATIONS, enchere, idTitre[0]);
+				Connection_DB.UpdatePrix(_SQL_UPDATE_OPERATIONS, enchere,
+						idTitre[0], Connexion.getIdUtilisateur(request));
 				session.setAttribute("TRANSACTION", "OK");
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
-		getServletContext().getRequestDispatcher("/WEB-INF/Titre/TransactionEnchere.jsp")
-				.forward(request, response);
+		getServletContext().getRequestDispatcher(
+				"/WEB-INF/Titre/TransactionEnchere.jsp").forward(request,
+				response);
 
 	}
 

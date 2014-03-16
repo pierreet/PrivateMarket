@@ -14,12 +14,11 @@ http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
   <servlet-mapping>
     <servlet-name>Faces Servlet</servlet-name>
     <url-pattern>*.xhtml</url-pattern>
-    <url-pattern>pages/deditProfil.jsp</url-pattern>
   </servlet-mapping>
   
 <servlet>
 	<servlet-name>Connexion</servlet-name>
-	<servlet-class>fr.dauphine.mido.privatemarket.servlets.Connexion</servlet-class>
+	<servlet-class>fr.dauphine.mido.as.privatemarket.servlets.Connexion</servlet-class>
 </servlet>
 <servlet-mapping>
 	<servlet-name>Connexion</servlet-name>
@@ -29,7 +28,7 @@ http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
 
  <servlet>
 	<servlet-name>Deconnexion</servlet-name>
-	<servlet-class>fr.dauphine.mido.privatemarket.servlets.Deconnexion</servlet-class>
+	<servlet-class>fr.dauphine.mido.as.privatemarket.servlets.Deconnexion</servlet-class>
 </servlet>
 <servlet-mapping>
 	<servlet-name>Deconnexion</servlet-name>
@@ -38,7 +37,7 @@ http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
 
  <servlet>
 	<servlet-name>Logged</servlet-name>
-	<servlet-class>fr.dauphine.mido.privatemarket.servlets.Logged</servlet-class>
+	<servlet-class>fr.dauphine.mido.as.privatemarket.servlets.Logged</servlet-class>
 </servlet>
 <servlet-mapping>
 	<servlet-name>Logged</servlet-name>
@@ -47,7 +46,7 @@ http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
 
  <servlet>
 	<servlet-name>AdminListerUtilisateurs</servlet-name>
-	<servlet-class>fr.dauphine.mido.privatemarket.servlets.AdminListerUtilisateurs</servlet-class>
+	<servlet-class>fr.dauphine.mido.as.privatemarket.servlets.AdminListerUtilisateurs</servlet-class>
 </servlet>
 <servlet-mapping>
 	<servlet-name>AdminListerUtilisateurs</servlet-name>
@@ -56,7 +55,7 @@ http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
 
  <servlet>
 	<servlet-name>AdminForward</servlet-name>
-	<servlet-class>fr.dauphine.mido.privatemarket.servlets.AdminForward</servlet-class>
+	<servlet-class>fr.dauphine.mido.as.privatemarket.servlets.AdminForward</servlet-class>
 </servlet>
 <servlet-mapping>
 	<servlet-name>AdminForward</servlet-name>
@@ -65,7 +64,7 @@ http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
 
  <servlet>
 	<servlet-name>AdminActivation</servlet-name>
-	<servlet-class>fr.dauphine.mido.privatemarket.servlets.AdminActivation</servlet-class>
+	<servlet-class>fr.dauphine.mido.as.privatemarket.servlets.AdminActivation</servlet-class>
 </servlet>
 <servlet-mapping>
 	<servlet-name>AdminActivation</servlet-name>
@@ -74,11 +73,20 @@ http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
 
  <servlet>
 	<servlet-name>Page</servlet-name>
-	<servlet-class>fr.dauphine.mido.privatemarket.servlets.Page</servlet-class>
+	<servlet-class>fr.dauphine.mido.as.privatemarket.servlets.Page</servlet-class>
 </servlet>
 <servlet-mapping>
 	<servlet-name>Page</servlet-name>
 	<url-pattern>/redirection</url-pattern>
+</servlet-mapping>
+
+ <servlet>
+	<servlet-name>TitreImmediat</servlet-name>
+	<servlet-class>fr.dauphine.mido.as.privatemarket.contrats.titre.TitreImmediat</servlet-class>
+</servlet>
+<servlet-mapping>
+	<servlet-name>TitreImmediat</servlet-name>
+	<url-pattern>/TitreImmediat</url-pattern>
 </servlet-mapping>
 </web-app>
 

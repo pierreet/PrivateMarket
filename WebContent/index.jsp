@@ -44,7 +44,7 @@
 			<p>
 			Notre rôle est de simplifié au maximum les transactions entre les sociétés et les investisseurs.<br/>
 			Grâce à PrivateMarket, il vous sera simple d’introduire votre société, d’investisseurs<br/>
-			sur le marché secondaire (actions, stock-options).<br/>
+			sur le marché secondaire (actions, stock-options).<br/><br/>
 
 			Les transactions sont garanties et sécurisées, inscrivez vous pour profiter pleinement du site internet.
 			</p>

@@ -30,7 +30,9 @@
 				<br /><br /><div class="center">
 					<a href=""><img src="images/icon/societes.png" alt="societes" /></a>
 					<a href="./utilisateurs"><img src="images/icon/utilisateur.png" alt="societes" /></a>
-					<a href=""><img	src="images/icon/contrats.png" alt="societes" /></a>
+					<a href="pages/indexContrats.html"><img	src="images/icon/contrats.png" alt="societes" /></a>
+						<a href="./ListeTransaction" ><img src="images/icon/transactions.png" alt="transaction" /></a>
+				<a href="" ><img src="images/icon/compte.png" alt="compte" /></a>
 						</div>
 		</div>
 	</div>

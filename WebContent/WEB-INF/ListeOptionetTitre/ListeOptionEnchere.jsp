@@ -6,6 +6,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
+<c:if test="${sessionScope.sessionUtilisateur.statut > 0}">
 <html>
 <head>
 <link rel="stylesheet" type="text/css" href="css/pages.css"
@@ -27,9 +28,8 @@
 		<div id="bg_body_top"></div>
 		<div id="bg_body_center">
 			<div id="bg_body">
-				<center>
-					<img src="images/icon/contrats.png" alt="" />
-				</center>
+				<img class="center" src="images/icon/contrats.png" alt="" />
+				<h2 class="title center">Liste des options en enchère</h2>
 				<br /> <br />
 
 
@@ -95,7 +95,7 @@
 						<TD align="center"><%=option.getDateInitial()%></TD>
 						<TD align="center"><%=option.getDateFinal()%></TD>
 						<TD align="center"><form
-								action="/PrivateMarket/OptionEnchere" method="Post">
+								action="./OptionEnchere" method="Post">
 								<input type="hidden" name="idTitre"
 									value="<%=option.getIdSOI()%>"> <INPUT type="submit"
 									name="Envoyer" value="Consulter"></INPUT>
@@ -108,6 +108,9 @@
 					%>
 
 				</TABLE>
+				<br/><br/>
+				<a class="center" href="./pages/indexContrats.html">Retour à la liste des contrats</a>
+		
 			</div>
 		</div>
 		<div id="bg_body_foot"></div>
@@ -120,5 +123,5 @@
 		</div>
 	</div>
 </body>
-</body>
 </html>
+</c:if>

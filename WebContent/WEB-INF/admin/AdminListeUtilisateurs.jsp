@@ -1,6 +1,6 @@
 <%@page import="java.util.ArrayList"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@page import="fr.dauphine.mido.privatemarket.entities.*"%>
+<%@page import="fr.dauphine.mido.as.privatemarket.entities.*"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <c:if test="${sessionScope.sessionUtilisateur.statut == 0}">

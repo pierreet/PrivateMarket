@@ -1,14 +1,17 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="fr.dauphine.mido.as.privatemarket.contrats.objet.Option"%>
-<%@page import="fr.dauphine.mido.as.privatemarket.contrats.objet.Entreprise"%>
-<%@page import="fr.dauphine.mido.as.privatemarket.contrats.objet.Vendeur"%>
+<%@page
+	import="fr.dauphine.mido.as.privatemarket.contrats.objet.Entreprise"%>
+<%@page
+	import="fr.dauphine.mido.as.privatemarket.contrats.objet.Vendeur"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<c:if test="${sessionScope.sessionUtilisateur.statut > 0}">
+	<html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Option Enchere</title>
@@ -19,17 +22,21 @@
 <body id="detail">
 	<%
 		Option option = (Option) session
-				.getAttribute("_LISTE_OPERATIONS_OPTION_ENCHERE");
-		Entreprise entreprise = (Entreprise) session
-				.getAttribute("_Entreprise");
-		Vendeur vendeur = (Vendeur) session.getAttribute("_Vendeur");
+					.getAttribute("_LISTE_OPERATIONS_OPTION_ENCHERE");
+			Entreprise entreprise = (Entreprise) session
+					.getAttribute("_Entreprise");
+			Vendeur vendeur = (Vendeur) session.getAttribute("_Vendeur");
 	%>
 	<div id="top">
 		<div id="topBody">
-			<div class="logo"><img src="images/logo2.png" alt="privatemarket"/></div>
+			<div class="logo">
+				<img src="images/logo2.png" alt="privatemarket" />
+			</div>
 			<div class="menu">
-				<a href="./listeEntreprise" ><img src="images/menu/liste.png" alt="liste" /></a>
-				<a href="./deconnexion" ><img src="images/menu/logout.jpg" alt="logout" /></a></div>
+				<a href="./listeEntreprise"><img src="images/menu/liste.png"
+					alt="liste" /></a> <a href="./deconnexion"><img
+					src="images/menu/logout.jpg" alt="logout" /></a>
+			</div>
 		</div>
 	</div>
 	<div id="content">
@@ -106,66 +113,69 @@
 					<form name="form" action="./OptionDemandeEnchere" method="Post">
 						<div class="box-achat">
 							<div class="prixEn">
-								<%=option.getPrime()%> EUR<br /> <span>PRIVATE MARKET
-									DONNées TEMPS RÉEL enchere minimum: <b><%=option.getPrime() + 0.01%></b></span>
+								<%=option.getPrime()%>
+								EUR<br /> <span>PRIVATE MARKET DONNées TEMPS RÉEL
+									enchere minimum: <b><%=option.getPrime() + 0.01%></b>
+								</span>
 							</div>
 							<div class="box-input">
 								<input type="text" class="input-en" name="enchere" />
 							</div>
 							<div class="right-button">
-								<input type="hidden" name="idTitre" value="<%=option.getIdSOI()%>">
-								<input class="send" type="submit" /><a onclick="form.submit()"><img
+								<input type="hidden" name="idTitre"
+									value="<%=option.getIdSOI()%>"> <input class="send"
+									type="submit" /><a onclick="form.submit()"><img
 									src="images/icon/encherir.jpg" alt="encherir" /></a>
-							</form>
-							</div>
-							<div class="prix-info">
-								<h2>Information sur l'action</h2>
-								<table align="center">
-									<tr>
-										<td width="300"><b>Type :</b></td>
-										<td>Option <%
-										if (option.getStatut() == 0) {
-									%> CALL <%
-										}
-
-										if (option.getStatut() == 1) {
-									%> PUT <%
-										}
-									%></td>
-									</tr>
-									<tr>
-										<td width="300"><b>Prix initial :</b></td>
-										<td><%=option.getPrixInitial()%></td>
-									</tr>
-									<tr>
-										<td width="300"><b>Prix d'exercice :</b></td>
-										<td><%=option.getStrike()%></td>
-									</tr>
-									<tr>
-										<td width="300"><b>Prime Initial:</b></td>
-										<td><%=option.getPrimeInitial()%></td>
-									</tr>
-
-									<td width="300"><b>Mode de négociation :</b></td>
-									<td>Enchère</td>
-									</tr>
-									<tr>
-										<td width="300"><b>Date de création du contrat :</b></td>
-										<td><%=option.getDateInitial()%></td>
-									</tr>
-									<tr>
-										<td width="300"><b>Date de fin du contrat :</b></td>
-										<td><%=option.getDateFinal()%></td>
-									</tr>
-
-								</table>
-							</div>
-						</div>
+					</form>
 				</div>
+				<div class="prix-info">
+					<h2>Information sur l'action</h2>
+					<table align="center">
+						<tr>
+							<td width="300"><b>Type :</b></td>
+							<td>Option <%
+								if (option.getStatut() == 0) {
+							%> CALL <%
+								}
 
+									if (option.getStatut() == 1) {
+							%> PUT <%
+								}
+							%></td>
+						</tr>
+						<tr>
+							<td width="300"><b>Prix initial :</b></td>
+							<td><%=option.getPrixInitial()%></td>
+						</tr>
+						<tr>
+							<td width="300"><b>Prix d'exercice :</b></td>
+							<td><%=option.getStrike()%></td>
+						</tr>
+						<tr>
+							<td width="300"><b>Prime Initial:</b></td>
+							<td><%=option.getPrimeInitial()%></td>
+						</tr>
+
+						<td width="300"><b>Mode de négociation :</b></td>
+						<td>Enchère</td>
+						</tr>
+						<tr>
+							<td width="300"><b>Date de création du contrat :</b></td>
+							<td><%=option.getDateInitial()%></td>
+						</tr>
+						<tr>
+							<td width="300"><b>Date de fin du contrat :</b></td>
+							<td><%=option.getDateFinal()%></td>
+						</tr>
+
+					</table>
+				</div>
 			</div>
 		</div>
-		<div id="bg_body_foot"></div>
+
+	</div>
+	</div>
+	<div id="bg_body_foot"></div>
 	</div>
 	</div>
 	<div id="foot_body">
@@ -175,10 +185,10 @@
 			projet MASTER 2 MIAGE - IF <b>Paris Dauphine</b>.
 		</div>
 </body>
-</html>
+	</html>
 
 
-
+</c:if>
 
 
 

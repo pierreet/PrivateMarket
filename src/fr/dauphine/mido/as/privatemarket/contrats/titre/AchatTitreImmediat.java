@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import fr.dauphine.mido.as.privatemarket.contrats.objet.Connection_DB;
+import fr.dauphine.mido.as.privatemarket.servlets.Connexion;
 
 
 @WebServlet("/AchatTitreImmediat")
@@ -22,7 +23,7 @@ public class AchatTitreImmediat extends HttpServlet {
 	}
 
 	private final static String _SQL_UPDATE_OPERATIONS = "UPDATE privatemarket.titre"
-			+ " SET idAcheteur='5' where idTitre=? and idAcheteur=0";
+			+ " SET idAcheteur=?, DateFin=? where idTitre=? and idAcheteur=0";
 
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
@@ -31,7 +32,7 @@ public class AchatTitreImmediat extends HttpServlet {
 		String[] idTitre = request.getParameterValues("idTitre");
 
 		try {
-			int a = Connection_DB.UpdateAcheteur(idTitre[0], _SQL_UPDATE_OPERATIONS);
+			int a = Connection_DB.UpdateAcheteur(Connexion.getIdUtilisateur(request),idTitre[0], _SQL_UPDATE_OPERATIONS);
 			if(a == 1)
 			session.setAttribute("TRANSACTION", "OK");
 			else{

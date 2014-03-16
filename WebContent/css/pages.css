@@ -80,12 +80,12 @@ body {
 	height: 40px;
 	vertical-align:bottom;
 }
- .bl {
+#tab_societes .bl {
 	background-color: #e1f2ee;
 	height:37px;
 	color: #474747;
 }
-.wl {
+#tab_societes .wl {
 	background-color: white;
 	height:37px;
 	color: #474747;
@@ -588,18 +588,6 @@ text-decoration:underline;
 .button:hover {
 	background-color:#60af91;
 }
-.title {
-	font-size:25px;
-	text-transform:uppercase;
-<<<<<<< HEAD
-	text-align:center;
-=======
-}
-.ct {
-	font-size:20px;
-	text-transform:uppercase;
->>>>>>> vincent
-}
 a {
 	color:#516371;
 	font-family: "Verdana",Arial;
@@ -619,8 +607,6 @@ a img {
 	border: solid 1px #6FBB62;
 	color: #4C8914;
 	background-color: #DCFFBF;
-<<<<<<< HEAD
-=======
 }
 .tn {
 	background-color:#99d5be;
@@ -659,5 +645,19 @@ a img {
 .tr-left h2 {
 	font-size:20px;
 	text-align:center;
->>>>>>> vincent
+}
+.title {
+	font-size:25px;
+	text-transform:uppercase;
+}
+.ct {
+	font-size:20px;
+}
+.tableaux2
+{
+font-size: 11px;
+border: solid 1px #DB756C;
+color: #AB3C32;
+
+background-color: #FFEDEF;
 }

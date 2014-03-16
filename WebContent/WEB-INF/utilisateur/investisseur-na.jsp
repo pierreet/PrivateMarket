@@ -21,35 +21,13 @@
 		<div id="bg_body_center">
 		
 			<div id="bg_body"><br/><br/>
-			
-		<%
-			String resultat = (String) session.getAttribute("TRANSACTION");
-			if (resultat.equals("OK")) {
-		%>
-				<table style="width:45%; text-align:center; margin:auto;" class="tableaux3">
-				<tr><td width="10%"><img src="./images/icon/ok.png" alt="error" /></td><td align="center">
-				Votre enchère à bien été pris en compte.
-				</td></tr></table>
-				<br/>	<br/>
-		<%
-			}
-			if (resultat.equals("KO")){
-		%>
-				<table style="width:45%; text-align:center; margin:auto;" class="tableaux2">
+			<table style="width:45%; text-align:center; margin:auto;" class="tableaux3">
 				<tr><td width="10%"><img src="./images/icon/err.png" alt="error" /></td><td align="center">
-				Erreur lors de votre transaction.<br/><br/>
-				Si ce problème persiste, contactez l'administrateur du serveur ou le fournisseur de services Internet.
+				Votre profil n'a pas encore été validé par un des administrateur du site.
 				</td></tr></table>
 				<br/>	<br/>
-		<% } %>
-
-
-			
-			
-			
-
 				
-				<a class="center" href="./pages/indexContrats.html">Retour aux contrats</a>
+				<a class="center" href="./">Retour à la page principal</a>
 			</div>
 	</div>
 		<div id="bg_body_foot"></div>	
@@ -62,4 +40,3 @@
 	</div>
 </body>
 </html>
-

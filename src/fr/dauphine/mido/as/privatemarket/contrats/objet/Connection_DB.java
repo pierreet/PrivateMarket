@@ -4,15 +4,23 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+
+import fr.dauphine.mido.as.privatemarket.entities.*;;
+
 public class Connection_DB {
 	public static DataSource datasource = null;
-	public static String NomDataSource = "PrivateMarket";
-
+	public static String NomDataSource = "privatemarket";
+	static DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");;
+	static Date date = new Date();;
+	static String DateActuel = dateFormat.format(date);
 	public Connection_DB() {
 
 	}
@@ -228,14 +236,16 @@ public class Connection_DB {
 		return resultat;
 	}
 
-	public static int UpdateAcheteur(String idTitre, String requete)
+	public static int UpdateAcheteur(String idAcheteur,String idTitre, String requete)
 			throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		datasource = getDataSource();
 		connection = datasource.getConnection();
 		preparedStatement = connection.prepareStatement(requete);
-		preparedStatement.setString(1, idTitre);
+		preparedStatement.setString(1, idAcheteur);
+		preparedStatement.setString(2,DateActuel );
+		preparedStatement.setString(3, idTitre);
 		int tmp = preparedStatement.executeUpdate();
 		try {
 			preparedStatement.close();
@@ -277,14 +287,15 @@ public class Connection_DB {
 	}
 
 	public static void UpdatePrix(String requete, double NouveauPrix,
-			String idTitre) throws SQLException {
+			String idTitre, String idAcheteur) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		datasource = getDataSource();
 		connection = datasource.getConnection();
 		preparedStatement = connection.prepareStatement(requete);
-		preparedStatement.setString(1, String.valueOf(NouveauPrix));
-		preparedStatement.setString(2, idTitre);
+		preparedStatement.setString(1, idAcheteur);
+		preparedStatement.setString(2, String.valueOf(NouveauPrix));
+		preparedStatement.setString(3, idTitre);
 		preparedStatement.executeUpdate();
 		try {
 			preparedStatement.close();
@@ -307,5 +318,96 @@ public class Connection_DB {
 			}
 		}
 		return datasource;
+	}
+	public static int getCompteLogin(String email, String password, Utilisateur utilisateur) throws SQLException {
+		String Requetes = "select * from privatemarket.utilisateurs where email=? and password=? ";
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		datasource = Connection_DB.getDataSource();
+		connection = datasource.getConnection();
+		preparedStatement = connection.prepareStatement(Requetes);
+		preparedStatement.setString(1, String.valueOf(email));
+		preparedStatement.setString(2, String.valueOf(password));
+		resultSet = preparedStatement.executeQuery();
+	
+		while(resultSet.next()) {
+			setUtilisateur(resultSet);
+			utilisateur.setStatut(resultSet.getInt("Statut"));
+			utilisateur.setIdUtilisateur(resultSet.getInt("idUtilisateur"));
+			utilisateur.setValidationInvestisseur(resultSet.getInt("validationInvestisseur"));
+			return 1;
+		}
+		try {
+			resultSet.close();
+			preparedStatement.close();
+			connection.close();
+		} catch (Exception e2) {
+			System.err.println(e2.getMessage().toString());
+		}
+
+		return 0;
+	}
+	public static ArrayList<Utilisateur> ListeUtilisateurs(String requete) {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		ArrayList<Utilisateur> resultat = null;
+		
+		datasource = getDataSource();
+		try {
+			connection = datasource.getConnection();
+			preparedStatement = connection.prepareStatement(requete);
+			resultSet = preparedStatement.executeQuery();
+			resultat = new ArrayList<Utilisateur>();
+			while (resultSet.next()) {
+				resultat.add(setUtilisateur(resultSet));
+			}
+		} catch (Exception e) {
+			System.err.println(e.getMessage().toString());
+		} finally {
+			try {
+				resultSet.close();
+				preparedStatement.close();
+				connection.close();
+			} catch (Exception e2) {
+				System.err.println(e2.getMessage().toString());
+			}
+		}
+		return resultat;
+	}
+	
+	
+	
+	public static void ActivationProfil(int id, String requete) throws SQLException {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		datasource = getDataSource();
+		connection = datasource.getConnection();
+		preparedStatement = connection.prepareStatement(requete);
+		preparedStatement.setString(1, String.valueOf(id));
+		preparedStatement.executeUpdate();
+		try {
+			preparedStatement.close();
+			connection.close();
+		} catch (Exception e2) {
+			System.err.println(e2.getMessage().toString());
+		}
+
+	}
+	public static Utilisateur setUtilisateur(ResultSet resultSet)
+			throws NumberFormatException, SQLException {
+			Utilisateur utilisateur = new Utilisateur();
+			utilisateur.setStatut(resultSet.getInt("Statut"));
+			utilisateur.setIdUtilisateur(resultSet.getInt("idUtilisateur"));
+			utilisateur.setPassword(resultSet.getString("Password"));
+			utilisateur.setNom(resultSet.getString("nom"));
+			utilisateur.setCodePostale(resultSet.getInt("CodePostale"));
+			utilisateur.setPrenom(resultSet.getString("prenom"));
+			utilisateur.setPays(resultSet.getString("pays"));		
+			utilisateur.setValidationInvestisseur(resultSet.getInt("validationInvestisseur"));
+			utilisateur.setIdEntreprise(resultSet.getInt("idEntreprise"));		
+			utilisateur.setEmail(resultSet.getString("email"));
+			return utilisateur;
 	}
 }

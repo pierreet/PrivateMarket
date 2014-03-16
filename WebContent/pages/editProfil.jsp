@@ -1,8 +1,7 @@
-
 <%@page import="java.lang.*"%>
 <%@page import="java.util.ArrayList"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@page import="fr.dauphine.mido.privatemarket.entities.*"%>
+<%@page import="fr.dauphine.mido.as.privatemarket.entities.*"%>
 <!DOCTYPE html>
 <html lang="fr"
       xmlns="http://www.w3.org/1999/xhtml"
