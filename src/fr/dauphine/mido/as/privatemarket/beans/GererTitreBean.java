@@ -25,7 +25,7 @@ public class GererTitreBean implements Serializable{
 	
 	public String inscrire(){
 		titreEJB.ajouter(titre);
-		return "Validation accepté";
+		return "Titre ajouté";
 	}
 	
 	public Titre getTitre(){

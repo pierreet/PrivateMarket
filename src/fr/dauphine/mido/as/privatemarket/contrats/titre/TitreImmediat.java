@@ -33,7 +33,14 @@ public class TitreImmediat extends HttpServlet {
 		response.setContentType("text/html");
 		HttpSession session = request.getSession();
 		String[] idTitre = request.getParameterValues("idTitre");
-
+		String[] idType= request.getParameterValues("type");
+		
+		if(idType[0].equals("vente")){
+			session.setAttribute("TYPE", "VENTE");
+		}
+		else{
+			session.setAttribute("TYPE", "ACHAT");
+		}
 		Titre listeTitre = Connection_DB.rechercheTitreUnique(idTitre[0],
 				_SQL_SELECT_OPERATIONS);
 		session.setAttribute(_LISTE_OPERATIONS_TITRE_IMMEDIAT, listeTitre);

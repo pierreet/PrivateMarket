@@ -10,13 +10,10 @@
 <body id="admin">
 	<div id="top">
 		<div id="topBody">
-			<div class="logo">
-				<img src="images/logo2.png" alt="privatemarket" />
-			</div>
+			<div class="logo"><img src="images/logo2.png" alt="privatemarket"/></div>
 			<div class="menu">
-				<a href="#"><img src="images/menu/liste.png" alt="liste" /></a>
-				<a href="./deconnexion"><img src="images/menu/logout.jpg" alt="logout" /></a>
-			</div>
+				<a href="./pages/listeEntreprises.xhtml" ><img src="images/menu/liste.png" alt="liste" /></a>
+				<a href="./deconnexion" ><img src="images/menu/logout.jpg" alt="logout" /></a></div>
 		</div>
 	</div>
 	<div id="content">
@@ -28,9 +25,9 @@
 					<p class="center">Vous êtes un <b>Administrateur</b> connecté avec l'adresse : <b>${sessionScope.sessionUtilisateur.email}</b></p>
 				
 				<br /><br /><div class="center">
-					<a href=""><img src="images/icon/societes.png" alt="societes" /></a>
+					<a href="./pages/listeEntreprises.xhtml"><img src="images/icon/societes.png" alt="societes" /></a>
 					<a href="./utilisateurs"><img src="images/icon/utilisateur.png" alt="societes" /></a>
-					<a href="pages/indexContrats.html"><img	src="images/icon/contrats.png" alt="societes" /></a>
+					<a href="pages/indexContrats.xhtml"><img	src="images/icon/contrats.png" alt="societes" /></a>
 						<a href="./ListeTransaction" ><img src="images/icon/transactions.png" alt="transaction" /></a>
 				<a href="./MonCompte" ><img src="images/icon/compte.png" alt="compte" /></a>
 						</div>

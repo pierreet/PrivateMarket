@@ -6,7 +6,7 @@
       xmlns:ui="http://java.sun.com/jsf/facelets">
     <h:head>
         <meta charset="utf-8" />
-        <title>Investisseur</title>
+        <title>Titre immédiat ajouté</title>
    
         <link rel='stylesheet' media='screen' type='text/css' title='Design' href='../css/pages.css' />
     </h:head>
@@ -23,15 +23,12 @@
 			<div id="bg_body"><br/><br/>
 				<table style="width:45%; text-align:center; margin:auto;" class="tableaux3">
 				<tr><td width="10%"><img src="../images/icon/ok.png" alt="error" /></td><td align="center">
-					
-					#{gererEntrepriseBean.inscrire()}
-					#{gererUtilisateurBean.setUtilisateur(gererUtilisateurBean.rechercheUtilisateur(gererEntrepriseBean.entreprise.idMembre))}
-	        		#{gererUtilisateurBean.utilisateur.setIdentreprise(gererEntrepriseBean.getIdEntreprise(gererEntrepriseBean.getEntreprise(gererEntrepriseBean.entreprise.nom)))}
-	        		#{gererUtilisateurBean.modifier()}
+					#{gererOptionBean.stockoption.setPrime(gererOptionBean.stockoption.primeInitial)}
+					#{gererOptionBean.inscrire()}
 				</td></tr></table>
 				<br/>	<br/>
 				
-				<a class="center" href="listeEntreprises.xhtml">Retour à la liste des sociétés</a>
+				<a class="center" href="indexContrats.xhtml">Retour à la page principal</a>
 			</div>
 	
 		<div id="bg_body_foot"></div>	</div>

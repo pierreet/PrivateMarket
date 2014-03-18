@@ -19,7 +19,7 @@
 		<div id="topBody">
 			<div class="logo"><img src="images/logo2.png" alt="privatemarket"/></div>
 			<div class="menu">
-				<a href="./listeEntreprise" ><img src="images/menu/liste.png" alt="liste" /></a>
+				<a href="./pages/listeEntreprises.xhtml" ><img src="images/menu/liste.png" alt="liste" /></a>
 				<a href="./deconnexion" ><img src="images/menu/logout.jpg" alt="logout" /></a></div>
 		</div>
 	</div>
@@ -93,7 +93,7 @@
 
 			</TABLE>
 			<br/><br/>
-				<a class="center" href="./pages/indexContrats.html">Retour à la liste des contrats</a>
+				<a class="center" href="./pages/indexContrats.xhtml">Retour à la liste des contrats</a>
 		
 		</div>
 	</div>

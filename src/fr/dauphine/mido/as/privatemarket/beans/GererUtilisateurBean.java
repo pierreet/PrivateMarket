@@ -18,8 +18,8 @@ public class GererUtilisateurBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private Utilisateur utilisateur;
-	private List<Utilisateur> listeUtilisateur;
-	private List<Utilisateur> listeMembreSociete;
+	private List<Utilisateur> listeUtilisateur=null;
+	private List<Utilisateur> listeMembreSociete=null;
 	
 	@EJB
 	private UtilisateurEJB utilisateurEJB;

@@ -3,6 +3,7 @@ package fr.dauphine.mido.as.privatemarket.entities;
 import java.io.Serializable;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 import java.util.Date;
 
@@ -52,9 +53,23 @@ public class Titre implements Serializable {
 		return this.dateDebut;
 	}
 
-	public void setDateDebut() {
-		Date date = new Date();
-		this.dateDebut = date;
+	public void setDateDebut(Date dateDebut) {
+		/*SimpleDateFormat formater = new SimpleDateFormat("yyyy-MM-dd");
+		Date d=null;
+		String chainedate = formater.format(new Date());
+		System.out.println(chainedate);
+		try {
+			d = formater.parse(chainedate);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		DateFormat df = new DateFormat();
+		Date test = DateForma
+		Date test = new Date(chainedate);
+		System.out.println(test);
+		System.out.println(d);*/
+		this.dateDebut = dateDebut;
 	}
 
 	public Date getDateFin() {

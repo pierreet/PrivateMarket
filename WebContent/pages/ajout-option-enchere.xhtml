@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:fmt="http://java.sun.com/jsp/jstl/fmt">
+    <h:head>
+        <meta charset="utf-8" />
+        <title>Ajout titre immédiat</title>
+   
+        <link rel='stylesheet' media='screen' type='text/css' title='Design' href='../css/pages.css' />
+    </h:head>
+    <body id="register">
+	<div id="top">
+		<div id="topBody">
+			<div class="logo"><img src="../images/logo2.png" alt="privatemarket"/></div>
+			<div class="menu">
+				<a href="./listeEntreprises.xhtml"><img src="../images/menu/liste.png" alt="liste" /></a>
+				<a href="../deconnexion"><img src="../images/menu/logout.jpg" alt="logout" /></a>
+			</div>
+	</div></div>
+		<div id="content">
+		<div id="bg_body_top"></div>
+		<div id="bg_body_center">
+			<div id="bg_body">
+				<div class="center"><img src="../images/text/societe.png" alt="" /></div><br/><br/>
+				<h:form>
+				<table id="tab_register">
+					<tr class="sep">
+							<td>Prime initiale<span class="asterisque">*</span></td>
+							<td>Strike<span class="asterisque">*</span></td>
+						</tr>
+						<tr>
+							<td><h:inputText id="code" value="#{gererOptionBean.stockoption.primeInitial}"></h:inputText>
+		        	<h:message id="codeMessage" for="code" errorClass="erreur" /></td>
+							<td><h:inputText id="secteur" value="#{gererOptionBean.stockoption.strike}"  />
+		        	<h:message id="secteurMessage" for="secteur" errorClass="erreur" /></td>
+						</tr>
+						<tr class="sep">
+							<td>Prix de vente<span class="asterisque">*</span></td>
+							<td>Date de fin d'enchère<span class="asterisque">*</span></td>
+						</tr>
+						<tr>
+							<td><h:inputText id="prix" value="#{gererOptionBean.stockoption.prixInitial}" />
+        					<h:message id="prixMessage" for="prix" errorClass="erreur" /></td>
+							<td>
+								<h:inputText id="datefinale" value="#{gererOptionBean.stockoption.dateFinal}">
+								<f:convertDateTime pattern="yyyy-MM-dd" type="date" />
+								</h:inputText>
+								<h:message id="datefinaleMessage" for="datefinale" errorClass="erreur" />
+							</td>
+						</tr>
+						<tr class="sep">
+						<td colspan="2">Choix option <span class="asterisque">*</span></td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							<h:selectOneMenu value="#{gererOptionBean.stockoption.statut}" class="register size2" id="select" name="fonction">
+									<f:selectItem itemValue="2" itemLabel="Call"></f:selectItem>
+									<f:selectItem itemValue="3" itemLabel="Put"></f:selectItem>
+								</h:selectOneMenu>
+        				</td>
+					</tr>
+					
+				</table>
+				
+				
+				#{gererOptionBean.stockoption.setDateInitial(currentDate)}
+				<h:inputHidden value="#{gererOptionBean.stockoption.dateInitial}">
+					<f:convertDateTime pattern="yyyy-MM-dd" type="date" />
+				</h:inputHidden>
+				#{gererOptionBean.stockoption.setIdVendeur(sessionScope.sessionUtilisateur.idUtilisateur)}
+				<h:inputHidden value="#{gererOptionBean.stockoption.idVendeur}" />
+				#{gererOptionBean.stockoption.setIdEntreprise(sessionScope.sessionUtilisateur.identreprise)}
+				<h:inputHidden value="#{gererOptionBean.stockoption.idEntreprise}" />
+				#{gererOptionBean.stockoption.setIdAcheteur(0)}
+				<h:inputHidden value="#{gererOptionBean.stockoption.idAcheteur}" />
+				
+				<div class="loggin"><h:commandButton value="Valider" action="option-ajoute" styleClass="asterisque" image="../images/menu/envoyer.jpg"/></div>
+				</h:form>
+				
+			
+			</div>
+	
+		<div id="bg_body_foot"></div>	</div>
+	</div>
+	<div id="foot_body">
+		<div class="copyright">
+		Site web réalisé en J2EE par <b>Jacques CHAN, Vincent RATNAM, Thomas SOUFFIR, Pierre-Etienne CREPY</b><br/>
+		Dans le cadre d'un projet MASTER 2 MIAGE - IF <b>Paris Dauphine</b>.
+		</div>
+	</div>
+</body>
+</html>

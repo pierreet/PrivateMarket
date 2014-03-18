@@ -3,9 +3,7 @@
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:c="http://java.sun.com/jsp/jstl/core"
-      xmlns:fmt="http://java.sun.com/jsp/jstl/fmt">
+      xmlns:ui="http://java.sun.com/jsf/facelets">
     <h:head>
         <meta charset="utf-8" />
         <title>Ajout titre immédiat</title>
@@ -29,15 +27,23 @@
 				<h:form>
 				<table id="tab_register">	
 					<tr class="sep">
-						<td colspan="2">Prix de vente <span class="asterisque">*</span></td>
+						<td>Prix de vente <span class="asterisque">*</span></td>
+						<td>Date de fin d'enchère <span class="asterisque">*</span></td>
 					</tr>
 					<tr>
-						<td colspan="2">
-							<h:inputText id="prix" value="#{gererTitreBean.titre.prixInitial}"  class="register size2" >
+						<td>
+							<h:inputText id="prix" value="#{gererTitreBean.titre.prixInitial}" >
         					</h:inputText>
         					<h:message id="prixMessage" for="prix" errorClass="erreur" />
         				</td>
+        				<td>
+							<h:inputText id="datefinale" value="#{gererTitreBean.titre.dateFin}">
+								<f:convertDateTime pattern="yyyy-MM-dd" type="date" />
+							</h:inputText>
+							<h:message id="datefinaleMessage" for="datefinale" errorClass="erreur" />
+        				</td>
 					</tr>
+
 				</table>
 				
 				
@@ -45,17 +51,14 @@
 				<h:inputHidden value="#{gererTitreBean.titre.dateDebut}">
 					<f:convertDateTime pattern="yyyy-MM-dd" type="date" />
 				</h:inputHidden>
-				#{gererTitreBean.titre.setDateFin(currentDate)}
-				<h:inputHidden value="#{gererTitreBean.titre.dateFin}">
-					<f:convertDateTime pattern="yyyy-MM-dd" type="date" />
-				</h:inputHidden>
+				<h:inputHidden value="#{gererTitreBean.titre.prixActuel}" />
 				#{gererTitreBean.titre.setIdVendeur(sessionScope.sessionUtilisateur.idUtilisateur)}
 				<h:inputHidden value="#{gererTitreBean.titre.idVendeur}" />
 				#{gererTitreBean.titre.setIdEntreprise(sessionScope.sessionUtilisateur.identreprise)}
 				<h:inputHidden value="#{gererTitreBean.titre.idEntreprise}" />
 				#{gererTitreBean.titre.setIdAcheteur(0)}
 				<h:inputHidden value="#{gererTitreBean.titre.idAcheteur}" />
-				#{gererTitreBean.titre.setStatut(0)}
+				#{gererTitreBean.titre.setStatut(1)}
 				<h:inputHidden value="#{gererTitreBean.titre.statut}" />
 				
 				<div class="loggin"><h:commandButton value="Valider" action="titre-ajoute" styleClass="asterisque" image="../images/menu/envoyer.jpg"/></div>

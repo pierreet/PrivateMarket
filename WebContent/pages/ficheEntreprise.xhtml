@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="fr"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title>Fiche entreprise</title>
+        	<link rel="stylesheet" type="text/css" href="../css/pages.css" media="screen"/>
+    </h:head>
+    
+<body id="detail">
+	<div id="top">
+		<div id="topBody">
+			<div class="logo"><img src="../images/logo2.png" alt="privatemarket"/></div>
+			<div class="menu">
+				<a href="./listeEntreprises.xhtml"><img src="../images/menu/liste.png" alt="liste" /></a>
+				<a href="../deconnexion"><img src="../images/menu/logout.jpg" alt="logout" /></a>
+			</div>
+	</div></div>
+		
+	<div id="content">
+		<div id="bg_body_top"></div>
+		<div id="bg_body_center">
+			<div id="bg_body">
+				<div class="left-icon"><img src="../images/icon/detail.png" alt="" /></div>
+				<div class="right-content">
+				<h1><h:outputText value="#{entreprise.nom}" /></h1>
+				<div class="left-info">
+					<h2>Information général</h2>
+					<table>
+						<tr>
+							<td width="200"><b>Nom de la société :</b> </td>
+							<td><h:outputText value="#{entreprise.nom}" /></td>
+						</tr>
+						<tr>
+							<td><b>Date de création :</b> </td>
+							<td><h:outputText value="#{entreprise.annee}" /></td>
+						</tr>
+						<tr>
+							<td><b>Secteur d'activité :</b> </td>
+							<td><h:outputText value="#{entreprise.secteur_Activite}" /></td>
+						</tr>
+						<tr>
+							<td><b>Code :</b> </td>
+							<td><h:outputText value="#{entreprise.code}" /></td>
+						</tr>
+					</table>
+				</div>
+				<div class="histoire">
+				<h2>Histoire :</h2>
+				<h:outputText value="#{entreprise.description}" />
+				</div>
+				</div>
+				<div class="left-contact">
+					<a href="https://www.facebook.com/" ><img src="../images/icon/like.jpg" alt="like" /></a>
+					<img src="../images/icon/rss.jpg" alt="rss" />
+					<a href="mailto:contact@jacqueschan.fr"><img src="../images/icon/email.jpg" alt="email" /></a>
+					<a href="javascript:window.print()" ><img src="../images/icon/print.jpg" alt="print" /></a>
+				</div>
+			
+				<div class="right-achat"><br/><br/><br/><br/>
+			<a class="center" href="listeEntreprises.xhtml" title="">Retour à la liste des sociétés</a>
+				</div>
+			
+		</div></div>
+		<div id="bg_body_foot"></div>
+	</div>
+	<div id="foot_body">
+		<div class="copyright">
+		Site web réalisé en J2EE par <b>Jacques CHAN, Vincent RATNAM, Thomas Souffir, Pierre-Etienne 
+Crepy</b><br/>
+		Dans le cadre d'un projet MASTER 2 MIAGE - IF <b>Paris Dauphine</b>.
+	</div>
+	</div>
+</body>
+</html>
+

@@ -3,6 +3,9 @@
 	<persistence-unit name="basePM" transaction-type="RESOURCE_LOCAL">
 		<non-jta-data-source>java:jboss/datasources/privatemarket</non-jta-data-source>
 		<class>fr.dauphine.mido.as.privatemarket.entities.Utilisateur</class>
+		<class>fr.dauphine.mido.as.privatemarket.entities.Entreprise</class>
+		<class>fr.dauphine.mido.as.privatemarket.entities.Titre</class>
+		<class>fr.dauphine.mido.as.privatemarket.entities.Stockoption</class>
 		<properties>
 			<property name="hibernate.connection.username" value="root"/>
 			<property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/privatemarket"/>

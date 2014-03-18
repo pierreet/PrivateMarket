@@ -14,7 +14,6 @@ import fr.dauphine.mido.as.privatemarket.contrats.objet.Entreprise;
 import fr.dauphine.mido.as.privatemarket.contrats.objet.Option;
 import fr.dauphine.mido.as.privatemarket.contrats.objet.Vendeur;
 
-
 /**
  * Servlet implementation class ServletPrincipal
  */
@@ -35,6 +34,13 @@ public class OptionImmediat extends HttpServlet {
 		response.setContentType("text/html");
 		HttpSession session = request.getSession();
 		String[] idTitre = request.getParameterValues("idTitre");
+		String[] idType = request.getParameterValues("type");
+
+		if (idType[0].equals("vente")) {
+			session.setAttribute("TYPE", "VENTE");
+		} else {
+			session.setAttribute("TYPE", "ACHAT");
+		}
 		Option listeTitre = Connection_DB.rechercheOptionUnique(idTitre[0],
 				_SQL_SELECT_OPERATIONS);
 		session.setAttribute(OptionImmediat._LISTE_OPERATIONS_OPTION_IMMEDIAT,

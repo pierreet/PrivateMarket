@@ -23,7 +23,7 @@
 				<img src="images/logo2.png" alt="privatemarket" />
 			</div>
 			<div class="menu">
-				<a href="./listeEntreprise"><img src="images/menu/liste.png"
+				<a href="./pages/listeEntreprises.xhtml"><img src="images/menu/liste.png"
 					alt="liste" /></a> <a href="./deconnexion"><img
 					src="images/menu/logout.jpg" alt="logout" /></a>
 			</div>
@@ -51,7 +51,7 @@
 								<TD align="center">Type</TD>
 								<TD align="center">Nom de l'Entreprise</TD>
 								<TD align="center">Prix</TD>
-								<TD align="center">Date</TD>
+								<TD align="center">Date de Transaction</TD>
 								<TD align="center">Consulter</TD>
 
 
@@ -100,7 +100,8 @@
 								%>
 								<form action="./TitreImmediat" method="Post">
 									<input type="hidden" name="idTitre" value="<%=titre.getId()%>">
-									<INPUT type="submit" name="Envoyer" value="Consulter"></INPUT>
+									<input type="hidden" name="type" value="vente"> <INPUT
+										type="submit" name="Envoyer" value="Consulter"></INPUT>
 								</form> <%
  	} else {
  %>
@@ -217,7 +218,8 @@
 							<TD align="center"><form action="./OptionImmediat"
 									method="Post">
 									<input type="hidden" name="idTitre"
-										value="<%=option.getIdSOI()%>"> <INPUT type="submit"
+										value="<%=option.getIdSOI()%>"> <input type="hidden"
+										name="type" value="vente"> <INPUT type="submit"
 										name="Envoyer" value="Consulter"></INPUT>
 								</form></TD>
 
@@ -275,7 +277,8 @@
 							<TD align="center"><form action="./OptionImmediat"
 									method="Post">
 									<input type="hidden" name="idTitre"
-										value="<%=option1.getIdSOI()%>"> <INPUT type="submit"
+										value="<%=option1.getIdSOI()%>"> <input type="hidden"
+										name="type" value="vente"> <INPUT type="submit"
 										name="Envoyer" value="Consulter"></INPUT>
 								</form></TD>
 

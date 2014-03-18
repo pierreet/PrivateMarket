@@ -11,6 +11,7 @@ import javax.persistence.NoResultException;
 import javax.persistence.PersistenceUnit;
 import javax.persistence.Query;
 
+
 import fr.dauphine.mido.as.privatemarket.entities.Titre;
 
 @Stateless
@@ -30,7 +31,6 @@ public class TitreEJB {
 		et.commit();
 	}
 	
-	@SuppressWarnings("unchecked")
 	public List<Titre> alltable(){
 		EntityManager em = emf.createEntityManager();
 		EntityTransaction et = em.getTransaction();
